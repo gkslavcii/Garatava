@@ -584,8 +584,14 @@
         }
         @media (max-width: 600px) {
             .topbar { display: none; }
-            .header-actions .icon-btn { width: 36px; height: 36px; font-size: 0.9rem; }
-            .lang-toggle { font-size: 0.7rem; padding: 0.4rem 0.6rem; }
+            .header-actions { gap: 0.35rem; }
+            .header-actions .icon-btn { width: 34px; height: 34px; font-size: 0.85rem; border-width: 1px; }
+            .lang-toggle { font-size: 0.65rem; padding: 0.35rem 0.5rem; gap: 0.2rem; margin-right: 0.2rem; }
+            .lang-toggle .lang-flag { font-size: 0.85rem; }
+            .header-content { padding: 0.6rem 0.8rem; gap: 0.4rem; }
+            .brand { gap: 0.5rem; }
+            .brand img { height: 40px; width: 40px; }
+            .brand-text { display: none; }
         }
 
         /* Header right-side actions (lang + icons replacing reservation btn) */
@@ -749,8 +755,7 @@
 
             <div class="about-grid">
                 <div class="about-text" id="about-text">
-                    <p data-i18n="about.p1">Garatava, Bodrum'un sakin köşesinde, doğayla iç içe bir kahvaltı restoran deneyimi sunar. Hem kapalı hem açık bahçe alanlarımızda, güneş battıktan sonra sıcak ışıkların altında unutulmaz anlar yaşayabilirsiniz.</p>
-                    <p data-i18n="about.p2">Geleneksel Türk mutfağının en lezzetli örnekleri, eşsiz köy kahvaltısına ilave taze et ürünleri ve elbette bodrumun o eşsiz akşamlarının vazgeçilmezi rakının eşliğinde bu harika yolculuğa katılın. Her ziyaretin bir hikaye olacağını vaad ediyoruz.</p>
+                    <p>Garatava, Bodrum'un sakin köşesinde, doğayla iç içe bir kahvaltı restoran deneyimi sunar. Hem kapalı hem açık bahçe alanlarımızda, güneş battıktan sonra sıcak ışıkların altında unutulmaz anlar yaşayabilirsiniz.</p>
                 </div>
                 <div class="why-card">
                     <h3 data-i18n="about.whyTitle">Neden Garatava?</h3>
@@ -1110,6 +1115,18 @@
 
             // About reasons
             ['reason1','reason2','reason3','reason4'].forEach(k => { if (about[k]) document.getElementById(k).textContent = about[k]; });
+
+            // About content (CMS markdown -> paragraphs)
+            if (about.content) {
+                const escape = (s) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                const html = escape(about.content)
+                    .split(/\n\s*\n/)
+                    .map(p => p.trim())
+                    .filter(Boolean)
+                    .map(p => `<p>${p.replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>')}</p>`)
+                    .join('');
+                document.getElementById('about-text').innerHTML = html;
+            }
 
             // Menu (no prices)
             const menuContainer = document.getElementById('menuContainer');

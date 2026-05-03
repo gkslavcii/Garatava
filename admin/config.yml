@@ -62,7 +62,7 @@ collections:
         file: "_data/about.json"
         fields:
           - {label: "Başlık", name: "title", widget: "string"}
-          - {label: "İçerik", name: "content", widget: "markdown"}
+          - {label: "Hikayemiz Metni", name: "content", widget: "text", hint: "Ana sayfadaki 'Bodrum'un Kalbinden' bölümünde görünür. Paragraflar için ARALIKLI satır bırakın (Enter Enter)."}
           - {label: "Neden Biz - Madde 1", name: "reason1", widget: "string"}
           - {label: "Neden Biz - Madde 2", name: "reason2", widget: "string"}
           - {label: "Neden Biz - Madde 3", name: "reason3", widget: "string"}
