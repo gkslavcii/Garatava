@@ -1,8 +1,24 @@
 {
   "items": [
-    {"image": "", "title": "Açık Bahçe", "description": "Doğal ışık ve cıvıltı"},
-    {"image": "", "title": "Kapalı Alan", "description": "Sıcak ve rahatlayıcı"},
-    {"image": "", "title": "Gece Işıkları", "description": "Sihirli atmosfer"},
-    {"image": "", "title": "Yemek Sunumu", "description": "Lezzetin görselliği"}
+    {
+      "image": "/images/whatsapp-image-2026-05-03-at-15.27.59.jpeg",
+      "title": "Açık Bahçe",
+      "description": "Doğal ışık ve cıvıltı"
+    },
+    {
+      "image": "/images/whatsapp-image-2026-05-03-at-15.28.00-3-.jpeg",
+      "title": "Kapalı Alan",
+      "description": "Sıcak ve rahatlayıcı"
+    },
+    {
+      "image": "/images/whatsapp-image-2026-05-03-at-15.27.59-1-.jpeg",
+      "title": "Gece Işıkları",
+      "description": "Rahatlatan atmosfer"
+    },
+    {
+      "image": "/images/sunum.png",
+      "title": "Yemek Sunumu",
+      "description": "Lezzetin görselliği"
+    }
   ]
 }
