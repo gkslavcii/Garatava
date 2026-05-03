@@ -1,0 +1,8 @@
+{
+  "items": [
+    {"category": "Mezeler", "name": "Haydari", "description": "Yoğurt, sarımsak ve nane ile", "price": 85},
+    {"category": "Mezeler", "name": "Sıcak Börek", "description": "Ev yapımı, sıcak ve lezzetli", "price": 95},
+    {"category": "Balık", "name": "Izgara Çipura", "description": "Günlük taze, zeytinyağı ve limonlu", "price": 350},
+    {"category": "Balık", "name": "Karides Güveç", "description": "Feta peyniri ve domates soslu", "price": 320}
+  ]
+}
