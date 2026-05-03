@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garatava — Bodrum Kahvaltı & Restaurant</title>
-    <meta name="description" content="Bodrum'un kalbinde, deniz esintisi ve Ege lezzetleriyle unutulmaz bir meyhane deneyimi.">
+    <meta name="description" content="Bodrum'un kalbinde sıcacık bir sofra: köy kahvaltısı, taze etler ve dostça paylaşılan akşamlar.">
     <meta property="og:title" content="Garatava — Bodrum">
-    <meta property="og:description" content="Ege lezzetleri, taze balık ve eşsiz atmosfer.">
+    <meta property="og:description" content="Köy kahvaltısı, taze etler ve dostça paylaşılan sofralar.">
     <meta property="og:image" content="/images/logo.png">
 
     <link rel="icon" type="image/png" href="/images/logo.png">
@@ -110,7 +110,7 @@
             align-items: center;
             gap: 0.9rem;
         }
-        .brand img { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 14px rgba(14,79,92,0.18); }
+        .brand img { height: 56px; width: 56px; object-fit: contain; background: transparent; }
         .brand-text { line-height: 1.1; }
         .brand-text .name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--teal-deep); letter-spacing: 2px; font-weight: 600; }
         .brand-text .sub { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--amber); text-transform: uppercase; }
@@ -171,7 +171,7 @@
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
-        .hero-logo { width: 180px; height: 180px; margin: 0 auto 2rem; border-radius: 50%; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: fadeInDown 1.2s ease both; }
+        .hero-logo { width: 160px; height: 160px; margin: 0 auto 1.2rem; object-fit: contain; background: transparent; animation: fadeInDown 1.2s ease both; }
         .hero-eyebrow {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
@@ -532,7 +532,7 @@
             padding: 4rem 0 2rem;
             text-align: center;
         }
-        .footer-logo { width: 90px; height: 90px; margin: 0 auto 1.5rem; border-radius: 50%; }
+        .footer-logo { width: 100px; height: 100px; margin: 0 auto 1.5rem; object-fit: contain; background: transparent; }
         .footer-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); letter-spacing: 4px; margin-bottom: 0.4rem; }
         .footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--amber); letter-spacing: 3px; margin-bottom: 2rem; }
         .footer-social { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
@@ -580,7 +580,15 @@
             .form-container { padding: 2rem 1.5rem; }
             section { padding: 4rem 0; }
             .container { padding: 0 1.2rem; }
-            .hero-logo { width: 130px; height: 130px; }
+            .hero { min-height: calc(100svh - 60px); padding-bottom: 4rem; }
+            .hero-content { padding: 0.5rem 1.2rem; }
+            .hero-logo { width: 110px; height: 110px; margin-bottom: 0.8rem; }
+            .hero-eyebrow { font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 0.6rem; }
+            .hero h1 { font-size: 2rem; letter-spacing: 2px; margin-bottom: 0.8rem; line-height: 1.2; }
+            .hero-tagline { font-size: 1rem; margin-bottom: 1.4rem; line-height: 1.45; }
+            .hero-tagline br { display: none; }
+            .btn { padding: 0.75rem 1.4rem; font-size: 0.7rem; letter-spacing: 2px; }
+            .hero-scroll { bottom: 1rem; font-size: 0.6rem; letter-spacing: 2px; }
         }
         @media (max-width: 600px) {
             .topbar { display: none; }
@@ -673,8 +681,9 @@
             max-width: 280px;
             max-height: 280px;
             width: 70vw;
+            background: transparent;
+            object-fit: contain;
             animation: splashPulse 1.6s ease-in-out infinite;
-            filter: drop-shadow(0 10px 40px rgba(0,0,0,0.4));
         }
         @keyframes splashPulse {
             0%, 100% { transform: scale(1); }
@@ -761,10 +770,12 @@
                 <div class="why-card">
                     <h3 data-i18n="about.whyTitle">Neden Garatava?</h3>
                     <ul class="why-list">
-                        <li><i class="fa-solid fa-fish"></i><span id="reason1">Günlük taze balık</span></li>
+                        <li><i class="fa-solid fa-mug-saucer"></i><span id="reason1">Bodrum köy kahvaltısı</span></li>
                         <li><i class="fa-solid fa-bowl-food"></i><span id="reason2">Ev yapımı mezeler</span></li>
-                        <li><i class="fa-solid fa-umbrella-beach"></i><span id="reason3">Deniz manzaralı teras</span></li>
-                        <li><i class="fa-solid fa-music"></i><span id="reason4">Canlı müzik geceleri</span></li>
+                        <li><i class="fa-solid fa-tree"></i><span id="reason3">Doğa ile iç içe ortam</span></li>
+                        <li><i class="fa-solid fa-guitar"></i><span id="reason4">Canlı müzik geceleri</span></li>
+                        <li><i class="fa-solid fa-drumstick-bite"></i><span id="reason5">Taze günlük etler</span></li>
+                        <li><i class="fa-solid fa-heart"></i><span id="reason6">Aile sıcaklığında ortam</span></li>
                     </ul>
                 </div>
             </div>
@@ -936,15 +947,15 @@
             tr: {
                 'nav.about': 'Hikayemiz', 'nav.menu': 'Menü', 'nav.atmosphere': 'Atmosfer', 'nav.contact': 'İletişim',
                 'hero.eyebrow': 'Bodrum • Kahvaltı & Restaurant',
-                'hero.title': "Ege'nin <span>Ruhu</span><br>Tek Bir Sofrada",
-                'hero.tagline': 'Taze balık, ev yapımı mezeler ve unutulmaz akşamlar — <br>Bodrum\'un kalbinde sizleri bekliyoruz.',
+                'hero.title': "Bodrum'un <span>Sıcak</span><br>Sofrasına Hoş Geldin",
+                'hero.tagline': 'Sabah güneşinde köy kahvaltısı, akşamın serinliğinde dostça paylaşılan sofralar — <br>Bodrum\'un kalbinde, ailenden biriymişsin gibi ağırlıyoruz.',
                 'hero.btnReserve': 'Rezervasyon Yap', 'hero.btnMenu': 'Menüyü Keşfet', 'hero.scroll': 'Aşağı Kaydır',
                 'about.eyebrow': 'Hikayemiz', 'about.title': "Bodrum'un Kalbinden",
                 'about.p1': "Garatava, Bodrum'un sakin köşesinde, doğayla iç içe bir meyhane deneyimi sunar. Hem kapalı hem açık bahçe alanlarımızda, güneş battıktan sonra sıcak ışıkların altında unutulmaz anlar yaşayabilirsiniz.",
                 'about.p2': 'Geleneksel Türk mutfağının en lezzetli örnekleri, taze balık ve deniz ürünleri ve elbette rakının eşliğinde bu eşsiz yolculuğa katılın. Her ziyaretin bir hikaye olacağını vaad ediyoruz.',
                 'about.whyTitle': 'Neden Garatava?',
                 'menu.eyebrow': 'Mutfağımız', 'menu.title': 'Menümüz',
-                'menu.note': 'Fiyatlar ve günün özel tariflerimiz için lütfen mekanımızda bizimle iletişime geçin.',
+                'menu.note': 'Günün taze tarifleri ve şefin sürprizleri için sofraya buyurun — sizi misafirimiz olarak ağırlamayı çok seviyoruz.',
                 'atmosphere.eyebrow': 'Atmosfer', 'atmosphere.title': 'Bir Akşamın Hikayesi',
                 'reservation.eyebrow': 'Bize Katılın', 'reservation.title': 'Rezervasyon',
                 'reservation.success': 'Rezervasyon isteğiniz alındı. En kısa zamanda sizinle iletişime geçeceğiz.',
@@ -964,15 +975,15 @@
             en: {
                 'nav.about': 'Our Story', 'nav.menu': 'Menu', 'nav.atmosphere': 'Atmosphere', 'nav.contact': 'Contact',
                 'hero.eyebrow': 'Bodrum • Breakfast & Restaurant',
-                'hero.title': 'The <span>Soul</span> of the Aegean<br>at One Table',
-                'hero.tagline': 'Fresh fish, homemade mezes and unforgettable evenings — <br>we await you at the heart of Bodrum.',
+                'hero.title': "Welcome to Bodrum's <span>Warm</span><br>Table",
+                'hero.tagline': 'Village breakfast in the morning sun, friendly tables shared in the cool of the evening — <br>at the heart of Bodrum, we host you like family.',
                 'hero.btnReserve': 'Reserve a Table', 'hero.btnMenu': 'Explore Menu', 'hero.scroll': 'Scroll Down',
                 'about.eyebrow': 'Our Story', 'about.title': 'From the Heart of Bodrum',
                 'about.p1': "Garatava offers an authentic meyhane experience in a quiet corner of Bodrum, surrounded by nature. In our indoor and open garden areas, you can spend unforgettable moments under warm lights after sunset.",
                 'about.p2': 'Join us on this unique journey accompanied by the finest examples of traditional Turkish cuisine, fresh fish and seafood, and of course raki. We promise every visit will be a story.',
                 'about.whyTitle': 'Why Garatava?',
                 'menu.eyebrow': 'Our Kitchen', 'menu.title': 'Our Menu',
-                'menu.note': 'For prices and our daily specials, please get in touch with us at our venue.',
+                'menu.note': "For our day's fresh recipes and the chef's surprises, come join us at our table — we'd love to host you.",
                 'atmosphere.eyebrow': 'Atmosphere', 'atmosphere.title': 'The Story of an Evening',
                 'reservation.eyebrow': 'Join Us', 'reservation.title': 'Reservation',
                 'reservation.success': 'Your reservation request has been received. We will contact you shortly.',
@@ -1115,7 +1126,7 @@
             }
 
             // About reasons
-            ['reason1','reason2','reason3','reason4'].forEach(k => { if (about[k]) document.getElementById(k).textContent = about[k]; });
+            ['reason1','reason2','reason3','reason4','reason5','reason6'].forEach(k => { if (about[k]) document.getElementById(k).textContent = about[k]; });
 
             // About content (CMS markdown -> paragraphs)
             if (about.content) {

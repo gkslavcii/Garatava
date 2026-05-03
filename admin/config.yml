@@ -67,3 +67,5 @@ collections:
           - {label: "Neden Biz - Madde 2", name: "reason2", widget: "string"}
           - {label: "Neden Biz - Madde 3", name: "reason3", widget: "string"}
           - {label: "Neden Biz - Madde 4", name: "reason4", widget: "string"}
+          - {label: "Neden Biz - Madde 5", name: "reason5", widget: "string", required: false}
+          - {label: "Neden Biz - Madde 6", name: "reason6", widget: "string", required: false}
