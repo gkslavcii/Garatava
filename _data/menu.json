@@ -1,12 +1,34 @@
 {
   "items": [
-    {"category": "Mezeler", "name": "Haydari", "description": "Süzme yoğurt, sarımsak ve nane"},
-    {"category": "Mezeler", "name": "Sıcak Börek", "description": "Ev yapımı, kıvamında ve çıtır"},
-    {"category": "Mezeler", "name": "Atom", "description": "Acılı yoğurt ile özel sosumuz"},
-    {"category": "Salatalar", "name": "Akdeniz Salatası", "description": "Mevsim yeşillikleri, feta, zeytin"},
-    {"category": "Balık", "name": "Izgara Çipura", "description": "Günlük taze, zeytinyağı ve limon ile"},
-    {"category": "Balık", "name": "Karides Güveç", "description": "Feta peyniri ve ev yapımı domates sos"},
-    {"category": "Balık", "name": "Kalamar Tava", "description": "Çıtır, hafif baharatlı"},
-    {"category": "Etli Yemekler", "name": "Kuzu Tandır", "description": "Saatlerce pişmiş, eriyen kıvam"}
+    {
+      "category": "Mezeler",
+      "name": "Haydari",
+      "description": "Süzme yoğurt, sarımsak ve nane"
+    },
+    {
+      "category": "Mezeler",
+      "name": "Sıcak Börek",
+      "description": "Ev yapımı, kıvamında ve çıtır"
+    },
+    {
+      "category": "Mezeler",
+      "name": "Atom",
+      "description": "Acılı yoğurt ile özel sosumuz"
+    },
+    {
+      "category": "Salatalar",
+      "name": "Akdeniz Salatası",
+      "description": "Mevsim yeşillikleri, feta, zeytin"
+    },
+    {
+      "category": "Etli Yemekler",
+      "name": "Kuzu Tandır",
+      "description": "Saatlerce pişmiş, eriyen kıvam"
+    },
+    {
+      "category": "Salatalar",
+      "name": "Ersen Şefin speciali",
+      "description": "şefin enfes salatası"
+    }
   ]
 }
