@@ -584,10 +584,103 @@
         }
         @media (max-width: 600px) {
             .topbar { display: none; }
+            .header-actions .icon-btn { width: 36px; height: 36px; font-size: 0.9rem; }
+            .lang-toggle { font-size: 0.7rem; padding: 0.4rem 0.6rem; }
+        }
+
+        /* Header right-side actions (lang + icons replacing reservation btn) */
+        .header-actions { display: flex; gap: 0.5rem; align-items: center; }
+        .lang-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: transparent;
+            border: 1px solid rgba(14,79,92,0.25);
+            color: var(--teal-deep);
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            margin-right: 0.4rem;
+        }
+        .lang-toggle:hover { background: var(--teal-deep); color: var(--white); border-color: var(--teal-deep); }
+        .lang-toggle .lang-flag { font-size: 0.95rem; }
+        .header-actions .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(14,79,92,0.2);
+            color: var(--teal-deep);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: transparent;
+        }
+        .header-actions .icon-btn:hover { background: var(--amber); border-color: var(--amber); color: var(--white); opacity: 1; transform: translateY(-2px); }
+        .header-actions .icon-btn.icon-instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: transparent; }
+        .header-actions .icon-btn.icon-whatsapp:hover { background: #25D366; border-color: #25D366; }
+
+        /* Directions button on map */
+        .map-wrap { position: relative; min-height: 420px; }
+        .directions-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--white);
+            color: var(--teal-deep);
+            padding: 0.7rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 6px 20px rgba(14,79,92,0.25);
+            transition: all 0.3s;
+            z-index: 5;
+        }
+        .directions-btn:hover { background: var(--amber); color: var(--white); opacity: 1; transform: translateY(-2px); }
+
+        /* Splash screen */
+        #splash {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--teal-deep) 0%, var(--ink) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        #splash.hide { opacity: 0; visibility: hidden; }
+        #splash img {
+            max-width: 280px;
+            max-height: 280px;
+            width: 70vw;
+            animation: splashPulse 1.6s ease-in-out infinite;
+            filter: drop-shadow(0 10px 40px rgba(0,0,0,0.4));
+        }
+        @keyframes splashPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
     </style>
 </head>
 <body>
+
+    <!-- Splash / loading screen -->
+    <div id="splash">
+        <img src="/images/logo.png" alt="Garatava" onerror="this.style.display='none'">
+    </div>
 
     <!-- Top utility bar -->
     <div class="topbar">
@@ -616,12 +709,19 @@
                 </div>
             </a>
             <nav>
-                <a href="#about">Hikayemiz</a>
-                <a href="#menu">Menü</a>
-                <a href="#atmosphere">Atmosfer</a>
-                <a href="#contact">İletişim</a>
+                <a href="#about" data-i18n="nav.about">Hikayemiz</a>
+                <a href="#menu" data-i18n="nav.menu">Menü</a>
+                <a href="#atmosphere" data-i18n="nav.atmosphere">Atmosfer</a>
+                <a href="#contact" data-i18n="nav.contact">İletişim</a>
             </nav>
-            <a href="#reservation" class="reserve-btn">Rezervasyon</a>
+            <div class="header-actions">
+                <button class="lang-toggle" id="langToggle" aria-label="Language toggle">
+                    <span class="lang-flag" id="langFlag">🇹🇷</span><span id="langCode">TR</span>
+                </button>
+                <a href="https://instagram.com/garatava" target="_blank" class="icon-btn icon-instagram" id="header-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/905539287494" target="_blank" class="icon-btn icon-whatsapp" id="header-whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="tel:+905539287494" class="icon-btn" id="header-phone" aria-label="Telefon"><i class="fa-solid fa-phone"></i></a>
+            </div>
         </div>
     </header>
 
@@ -629,31 +729,31 @@
     <section class="hero" id="top">
         <div class="hero-content">
             <img src="/images/logo.png" alt="Garatava" class="hero-logo" onerror="this.style.display='none'">
-            <div class="hero-eyebrow">Bodrum • Meyhane & Restaurant</div>
-            <h1>Ege'nin <span>Ruhu</span><br>Tek Bir Sofrada</h1>
-            <p class="hero-tagline">Taze balık, ev yapımı mezeler ve unutulmaz akşamlar — <br>Bodrum'un kalbinde sizleri bekliyoruz.</p>
+            <div class="hero-eyebrow" data-i18n="hero.eyebrow">Bodrum • Meyhane & Restaurant</div>
+            <h1 data-i18n-html="hero.title">Ege'nin <span>Ruhu</span><br>Tek Bir Sofrada</h1>
+            <p class="hero-tagline" data-i18n-html="hero.tagline">Taze balık, ev yapımı mezeler ve unutulmaz akşamlar — <br>Bodrum'un kalbinde sizleri bekliyoruz.</p>
             <div class="hero-buttons">
-                <a href="#reservation" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Rezervasyon Yap</a>
-                <a href="#menu" class="btn btn-outline">Menüyü Keşfet</a>
+                <a href="#reservation" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> <span data-i18n="hero.btnReserve">Rezervasyon Yap</span></a>
+                <a href="#menu" class="btn btn-outline" data-i18n="hero.btnMenu">Menüyü Keşfet</a>
             </div>
         </div>
-        <div class="hero-scroll">Aşağı Kaydır<i class="fa-solid fa-chevron-down"></i></div>
+        <div class="hero-scroll"><span data-i18n="hero.scroll">Aşağı Kaydır</span><i class="fa-solid fa-chevron-down"></i></div>
     </section>
 
     <!-- About -->
     <section class="about reveal" id="about">
         <div class="container">
-            <div class="section-eyebrow">Hikayemiz</div>
-            <h2 class="section-title">Bodrum'un Kalbinden</h2>
+            <div class="section-eyebrow" data-i18n="about.eyebrow">Hikayemiz</div>
+            <h2 class="section-title" data-i18n="about.title">Bodrum'un Kalbinden</h2>
             <div class="section-divider"><i class="fa-solid fa-fire"></i></div>
 
             <div class="about-grid">
                 <div class="about-text" id="about-text">
-                    <p>Garatava, Bodrum'un sakin köşesinde, doğayla iç içe bir meyhane deneyimi sunar. Hem kapalı hem açık bahçe alanlarımızda, güneş battıktan sonra sıcak ışıkların altında unutulmaz anlar yaşayabilirsiniz.</p>
-                    <p>Geleneksel Türk mutfağının en lezzetli örnekleri, taze balık ve deniz ürünleri ve elbette rakının eşliğinde bu eşsiz yolculuğa katılın. Her ziyaretin bir hikaye olacağını vaad ediyoruz.</p>
+                    <p data-i18n="about.p1">Garatava, Bodrum'un sakin köşesinde, doğayla iç içe bir meyhane deneyimi sunar. Hem kapalı hem açık bahçe alanlarımızda, güneş battıktan sonra sıcak ışıkların altında unutulmaz anlar yaşayabilirsiniz.</p>
+                    <p data-i18n="about.p2">Geleneksel Türk mutfağının en lezzetli örnekleri, taze balık ve deniz ürünleri ve elbette rakının eşliğinde bu eşsiz yolculuğa katılın. Her ziyaretin bir hikaye olacağını vaad ediyoruz.</p>
                 </div>
                 <div class="why-card">
-                    <h3>Neden Garatava?</h3>
+                    <h3 data-i18n="about.whyTitle">Neden Garatava?</h3>
                     <ul class="why-list">
                         <li><i class="fa-solid fa-fish"></i><span id="reason1">Günlük taze balık</span></li>
                         <li><i class="fa-solid fa-bowl-food"></i><span id="reason2">Ev yapımı mezeler</span></li>
@@ -668,20 +768,20 @@
     <!-- Menu -->
     <section class="menu reveal" id="menu">
         <div class="container">
-            <div class="section-eyebrow">Mutfağımız</div>
-            <h2 class="section-title">Menümüz</h2>
+            <div class="section-eyebrow" data-i18n="menu.eyebrow">Mutfağımız</div>
+            <h2 class="section-title" data-i18n="menu.title">Menümüz</h2>
             <div class="section-divider"><i class="fa-solid fa-utensils"></i></div>
 
             <div class="menu-grid" id="menuContainer"></div>
-            <p class="menu-note">Fiyatlar ve günün özel tariflerimiz için lütfen mekanımızda bizimle iletişime geçin.</p>
+            <p class="menu-note" data-i18n="menu.note">Fiyatlar ve günün özel tariflerimiz için lütfen mekanımızda bizimle iletişime geçin.</p>
         </div>
     </section>
 
     <!-- Atmosphere -->
     <section class="atmosphere reveal" id="atmosphere">
         <div class="container">
-            <div class="section-eyebrow">Atmosfer</div>
-            <h2 class="section-title">Bir Akşamın Hikayesi</h2>
+            <div class="section-eyebrow" data-i18n="atmosphere.eyebrow">Atmosfer</div>
+            <h2 class="section-title" data-i18n="atmosphere.title">Bir Akşamın Hikayesi</h2>
             <div class="section-divider"><i class="fa-solid fa-wine-glass"></i></div>
 
             <div class="photo-grid" id="galleryContainer"></div>
@@ -691,13 +791,13 @@
     <!-- Reservation -->
     <section class="reservation reveal" id="reservation">
         <div class="container">
-            <div class="section-eyebrow" style="color: var(--amber);">Bize Katılın</div>
-            <h2 class="section-title">Rezervasyon</h2>
+            <div class="section-eyebrow" style="color: var(--amber);" data-i18n="reservation.eyebrow">Bize Katılın</div>
+            <h2 class="section-title" data-i18n="reservation.title">Rezervasyon</h2>
             <div class="section-divider"><i class="fa-regular fa-calendar"></i></div>
 
             <div class="form-container">
                 <div class="success-message" id="successMessage">
-                    <i class="fa-solid fa-check-circle"></i> Rezervasyon isteğiniz alındı. En kısa zamanda sizinle iletişime geçeceğiz.
+                    <i class="fa-solid fa-check-circle"></i> <span data-i18n="reservation.success">Rezervasyon isteğiniz alındı. En kısa zamanda sizinle iletişime geçeceğiz.</span>
                 </div>
                 <form id="reservationForm" name="reservation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                     <input type="hidden" name="form-name" value="reservation">
@@ -705,50 +805,50 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Adınız *</label>
+                            <label for="name" data-i18n="form.name">Adınız *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Telefon *</label>
+                            <label for="phone" data-i18n="form.phone">Telefon *</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="date">Tarih *</label>
+                            <label for="date" data-i18n="form.date">Tarih *</label>
                             <input type="date" id="date" name="date" required>
                         </div>
                         <div class="form-group">
-                            <label for="time">Saat *</label>
+                            <label for="time" data-i18n="form.time">Saat *</label>
                             <input type="time" id="time" name="time" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="guests">Kişi Sayısı *</label>
+                            <label for="guests" data-i18n="form.guests">Kişi Sayısı *</label>
                             <select id="guests" name="guests" required>
-                                <option value="">Seçiniz...</option>
-                                <option value="1">1 Kişi</option>
-                                <option value="2">2 Kişi</option>
-                                <option value="3">3 Kişi</option>
-                                <option value="4">4 Kişi</option>
-                                <option value="5">5 Kişi</option>
-                                <option value="6">6 Kişi</option>
-                                <option value="7">7 Kişi</option>
-                                <option value="8">8 Kişi</option>
-                                <option value="9+">9 veya daha fazla</option>
+                                <option value="" data-i18n="form.select">Seçiniz...</option>
+                                <option value="1" data-i18n="form.p1">1 Kişi</option>
+                                <option value="2" data-i18n="form.p2">2 Kişi</option>
+                                <option value="3" data-i18n="form.p3">3 Kişi</option>
+                                <option value="4" data-i18n="form.p4">4 Kişi</option>
+                                <option value="5" data-i18n="form.p5">5 Kişi</option>
+                                <option value="6" data-i18n="form.p6">6 Kişi</option>
+                                <option value="7" data-i18n="form.p7">7 Kişi</option>
+                                <option value="8" data-i18n="form.p8">8 Kişi</option>
+                                <option value="9+" data-i18n="form.p9">9 veya daha fazla</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-posta</label>
+                            <label for="email" data-i18n="form.email">E-posta</label>
                             <input type="email" id="email" name="email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="notes">Özel İstekler / Notlar</label>
-                        <textarea id="notes" name="notes" rows="3" placeholder="Doğum günü, alerjiler, özel tercihler..."></textarea>
+                        <label for="notes" data-i18n="form.notes">Özel İstekler / Notlar</label>
+                        <textarea id="notes" name="notes" rows="3" data-i18n-attr="placeholder:form.notesPlaceholder" placeholder="Doğum günü, alerjiler, özel tercihler..."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Rezervasyon İsteği Gönder</button>
+                    <button type="submit" class="submit-btn" data-i18n="form.submit">Rezervasyon İsteği Gönder</button>
                 </form>
             </div>
         </div>
@@ -757,35 +857,40 @@
     <!-- Contact -->
     <section class="contact reveal" id="contact">
         <div class="container">
-            <div class="section-eyebrow">İletişim</div>
-            <h2 class="section-title">Bizi Bulun</h2>
+            <div class="section-eyebrow" data-i18n="contact.eyebrow">İletişim</div>
+            <h2 class="section-title" data-i18n="contact.title">Bizi Bulun</h2>
             <div class="section-divider"><i class="fa-solid fa-location-dot"></i></div>
 
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="contact-card">
                         <i class="fa-solid fa-location-dot"></i>
-                        <div><strong>Adres</strong><span id="contact-address">Bodrum, Muğla</span></div>
+                        <div><strong data-i18n="contact.address">Adres</strong><span id="contact-address">Bodrum, Muğla</span></div>
                     </div>
                     <div class="contact-card">
                         <i class="fa-solid fa-phone"></i>
-                        <div><strong>Telefon</strong><a href="tel:+905539287494" id="contact-phone">+90 553 928 74 94</a></div>
+                        <div><strong data-i18n="contact.phone">Telefon</strong><a href="tel:+905539287494" id="contact-phone">+90 553 928 74 94</a></div>
                     </div>
                     <div class="contact-card">
                         <i class="fa-solid fa-envelope"></i>
-                        <div><strong>E-posta</strong><a href="mailto:info@garatava.com" id="contact-email">info@garatava.com</a></div>
+                        <div><strong data-i18n="contact.email">E-posta</strong><a href="mailto:info@garatava.com" id="contact-email">info@garatava.com</a></div>
                     </div>
                     <div class="contact-card">
                         <i class="fa-brands fa-whatsapp"></i>
-                        <div><strong>WhatsApp</strong><a href="https://wa.me/905539287494" target="_blank" id="contact-whatsapp">Hemen Mesaj Gönder</a></div>
+                        <div><strong>WhatsApp</strong><a href="https://wa.me/905539287494" target="_blank" id="contact-whatsapp" data-i18n="contact.waBtn">Hemen Mesaj Gönder</a></div>
                     </div>
                     <div class="contact-card">
                         <i class="fa-brands fa-instagram"></i>
                         <div><strong>Instagram</strong><a href="https://instagram.com/garatava" target="_blank" id="contact-instagram">@garatava</a></div>
                     </div>
                 </div>
-                <div id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12649.0!2d27.4233!3d37.0345!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBodrum!5e0!3m2!1str!2str" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-wrap">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Garatava%2C+Bodrum" target="_blank" class="directions-btn">
+                        <i class="fa-solid fa-route"></i> <span data-i18n="map.directions">Yol Tarifi Al</span>
+                    </a>
+                    <div id="map">
+                        <iframe src="https://maps.google.com/maps?q=Garatava+Bodrum&t=&z=14&ie=UTF8&iwloc=B&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -804,8 +909,8 @@
                 <a href="tel:+905539287494" aria-label="Telefon"><i class="fa-solid fa-phone"></i></a>
             </div>
             <div class="footer-bottom">
-                &copy; <span id="year"></span> Garatava — Bodrum. Tüm hakları saklıdır.
-                <div class="footer-admin"><a href="/admin/">Yönetim Paneli</a></div>
+                &copy; <span id="year"></span> Garatava — Bodrum. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span>
+                <div class="footer-admin"><a href="/admin/" data-i18n="footer.admin">Yönetim Paneli</a></div>
             </div>
         </div>
     </footer>
@@ -813,16 +918,140 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // === Splash screen ===
+        window.addEventListener('load', () => {
+            setTimeout(() => document.getElementById('splash').classList.add('hide'), 900);
+        });
+        // Failsafe
+        setTimeout(() => document.getElementById('splash').classList.add('hide'), 3500);
+
+        // === Language toggle (TR / EN) ===
+        const i18n = {
+            tr: {
+                'nav.about': 'Hikayemiz', 'nav.menu': 'Menü', 'nav.atmosphere': 'Atmosfer', 'nav.contact': 'İletişim',
+                'hero.eyebrow': 'Bodrum • Meyhane & Restaurant',
+                'hero.title': "Ege'nin <span>Ruhu</span><br>Tek Bir Sofrada",
+                'hero.tagline': 'Taze balık, ev yapımı mezeler ve unutulmaz akşamlar — <br>Bodrum\'un kalbinde sizleri bekliyoruz.',
+                'hero.btnReserve': 'Rezervasyon Yap', 'hero.btnMenu': 'Menüyü Keşfet', 'hero.scroll': 'Aşağı Kaydır',
+                'about.eyebrow': 'Hikayemiz', 'about.title': "Bodrum'un Kalbinden",
+                'about.p1': "Garatava, Bodrum'un sakin köşesinde, doğayla iç içe bir meyhane deneyimi sunar. Hem kapalı hem açık bahçe alanlarımızda, güneş battıktan sonra sıcak ışıkların altında unutulmaz anlar yaşayabilirsiniz.",
+                'about.p2': 'Geleneksel Türk mutfağının en lezzetli örnekleri, taze balık ve deniz ürünleri ve elbette rakının eşliğinde bu eşsiz yolculuğa katılın. Her ziyaretin bir hikaye olacağını vaad ediyoruz.',
+                'about.whyTitle': 'Neden Garatava?',
+                'menu.eyebrow': 'Mutfağımız', 'menu.title': 'Menümüz',
+                'menu.note': 'Fiyatlar ve günün özel tariflerimiz için lütfen mekanımızda bizimle iletişime geçin.',
+                'atmosphere.eyebrow': 'Atmosfer', 'atmosphere.title': 'Bir Akşamın Hikayesi',
+                'reservation.eyebrow': 'Bize Katılın', 'reservation.title': 'Rezervasyon',
+                'reservation.success': 'Rezervasyon isteğiniz alındı. En kısa zamanda sizinle iletişime geçeceğiz.',
+                'form.name': 'Adınız *', 'form.phone': 'Telefon *', 'form.date': 'Tarih *', 'form.time': 'Saat *',
+                'form.guests': 'Kişi Sayısı *', 'form.email': 'E-posta', 'form.notes': 'Özel İstekler / Notlar',
+                'form.notesPlaceholder': 'Doğum günü, alerjiler, özel tercihler...',
+                'form.select': 'Seçiniz...',
+                'form.p1': '1 Kişi', 'form.p2': '2 Kişi', 'form.p3': '3 Kişi', 'form.p4': '4 Kişi',
+                'form.p5': '5 Kişi', 'form.p6': '6 Kişi', 'form.p7': '7 Kişi', 'form.p8': '8 Kişi', 'form.p9': '9 veya daha fazla',
+                'form.submit': 'Rezervasyon İsteği Gönder',
+                'contact.eyebrow': 'İletişim', 'contact.title': 'Bizi Bulun',
+                'contact.address': 'Adres', 'contact.phone': 'Telefon', 'contact.email': 'E-posta',
+                'contact.waBtn': 'Hemen Mesaj Gönder',
+                'map.directions': 'Yol Tarifi Al',
+                'footer.rights': 'Tüm hakları saklıdır.', 'footer.admin': 'Yönetim Paneli',
+            },
+            en: {
+                'nav.about': 'Our Story', 'nav.menu': 'Menu', 'nav.atmosphere': 'Atmosphere', 'nav.contact': 'Contact',
+                'hero.eyebrow': 'Bodrum • Meyhane & Restaurant',
+                'hero.title': 'The <span>Soul</span> of the Aegean<br>at One Table',
+                'hero.tagline': 'Fresh fish, homemade mezes and unforgettable evenings — <br>we await you at the heart of Bodrum.',
+                'hero.btnReserve': 'Reserve a Table', 'hero.btnMenu': 'Explore Menu', 'hero.scroll': 'Scroll Down',
+                'about.eyebrow': 'Our Story', 'about.title': 'From the Heart of Bodrum',
+                'about.p1': "Garatava offers an authentic meyhane experience in a quiet corner of Bodrum, surrounded by nature. In our indoor and open garden areas, you can spend unforgettable moments under warm lights after sunset.",
+                'about.p2': 'Join us on this unique journey accompanied by the finest examples of traditional Turkish cuisine, fresh fish and seafood, and of course raki. We promise every visit will be a story.',
+                'about.whyTitle': 'Why Garatava?',
+                'menu.eyebrow': 'Our Kitchen', 'menu.title': 'Our Menu',
+                'menu.note': 'For prices and our daily specials, please get in touch with us at our venue.',
+                'atmosphere.eyebrow': 'Atmosphere', 'atmosphere.title': 'The Story of an Evening',
+                'reservation.eyebrow': 'Join Us', 'reservation.title': 'Reservation',
+                'reservation.success': 'Your reservation request has been received. We will contact you shortly.',
+                'form.name': 'Your Name *', 'form.phone': 'Phone *', 'form.date': 'Date *', 'form.time': 'Time *',
+                'form.guests': 'Guests *', 'form.email': 'Email', 'form.notes': 'Special Requests / Notes',
+                'form.notesPlaceholder': 'Birthday, allergies, special preferences...',
+                'form.select': 'Select...',
+                'form.p1': '1 Person', 'form.p2': '2 People', 'form.p3': '3 People', 'form.p4': '4 People',
+                'form.p5': '5 People', 'form.p6': '6 People', 'form.p7': '7 People', 'form.p8': '8 People', 'form.p9': '9 or more',
+                'form.submit': 'Send Reservation Request',
+                'contact.eyebrow': 'Contact', 'contact.title': 'Find Us',
+                'contact.address': 'Address', 'contact.phone': 'Phone', 'contact.email': 'Email',
+                'contact.waBtn': 'Send Message Now',
+                'map.directions': 'Get Directions',
+                'footer.rights': 'All rights reserved.', 'footer.admin': 'Admin Panel',
+            }
+        };
+
+        function applyLang(lang) {
+            const dict = i18n[lang] || i18n.tr;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) el.textContent = dict[key];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.getAttribute('data-i18n-html');
+                if (dict[key] !== undefined) el.innerHTML = dict[key];
+            });
+            document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+                el.getAttribute('data-i18n-attr').split(',').forEach(pair => {
+                    const [attr, key] = pair.split(':').map(s => s.trim());
+                    if (dict[key] !== undefined) el.setAttribute(attr, dict[key]);
+                });
+            });
+            document.documentElement.lang = lang;
+            document.getElementById('langFlag').textContent = lang === 'tr' ? '🇬🇧' : '🇹🇷';
+            document.getElementById('langCode').textContent = lang === 'tr' ? 'EN' : 'TR';
+            localStorage.setItem('garatava-lang', lang);
+        }
+
+        const initialLang = localStorage.getItem('garatava-lang') || 'tr';
+        applyLang(initialLang);
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            const current = localStorage.getItem('garatava-lang') || 'tr';
+            applyLang(current === 'tr' ? 'en' : 'tr');
+        });
+
         // Reveal on scroll
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-        // Reservation form (Netlify will capture)
-        document.getElementById('reservationForm').addEventListener('submit', function(e) {
-            // Netlify forms work via standard POST — let it submit, but show success
-            // If you want AJAX: prevent default and fetch().
+        // Reservation form: send to Netlify (email) AND open WhatsApp with prefilled text
+        document.getElementById('reservationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = this;
+            const data = new FormData(form);
+
+            // 1) Submit to Netlify (silent, in background) -> sana email gelir
+            try {
+                await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(data).toString()
+                });
+            } catch (err) { /* yine de WhatsApp'a yönlendir */ }
+
+            // 2) Open WhatsApp with prefilled message (restoran numarasına)
+            const restaurantWa = (window.__restaurantWhatsapp || '+905539287494').replace(/[^0-9]/g, '');
+            const msg = `Merhaba, rezervasyon yapmak istiyorum.%0A%0A` +
+                `👤 İsim: ${data.get('name') || ''}%0A` +
+                `📞 Telefon: ${data.get('phone') || ''}%0A` +
+                `📅 Tarih: ${data.get('date') || ''}%0A` +
+                `🕐 Saat: ${data.get('time') || ''}%0A` +
+                `👥 Kişi: ${data.get('guests') || ''}%0A` +
+                (data.get('email') ? `✉️ Email: ${data.get('email')}%0A` : '') +
+                (data.get('notes') ? `📝 Not: ${data.get('notes')}%0A` : '');
+            const waUrl = `https://wa.me/${restaurantWa}?text=${msg}`;
+
+            document.getElementById('successMessage').classList.add('show');
+            window.open(waUrl, '_blank');
+            form.reset();
+            setTimeout(() => document.getElementById('successMessage').classList.remove('show'), 6000);
         });
 
         // Smooth scroll for anchors
@@ -873,6 +1102,7 @@
             if (restaurant.instagram) { setHref('topbar-instagram', restaurant.instagram); setHref('contact-instagram', restaurant.instagram); document.getElementById('contact-instagram').textContent = '@' + restaurant.instagram.replace(/.*instagram\.com\//,'').replace(/\/$/,''); }
             if (restaurant.facebook) setHref('topbar-facebook', restaurant.facebook);
             if (restaurant.whatsapp) {
+                window.__restaurantWhatsapp = restaurant.whatsapp;
                 const wa = `https://wa.me/${restaurant.whatsapp.replace(/[^0-9]/g,'')}`;
                 setHref('topbar-whatsapp', wa);
                 document.getElementById('contact-whatsapp').href = wa;
