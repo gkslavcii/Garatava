@@ -3,620 +3,706 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garatava - Bodrum Meyhane & Restaurant</title>
-    <!-- Netlify Identity Widget - Admin panel için GEREKLI -->
+    <title>Garatava — Bodrum Meyhane & Restaurant</title>
+    <meta name="description" content="Bodrum'un kalbinde, deniz esintisi ve Ege lezzetleriyle unutulmaz bir meyhane deneyimi.">
+    <meta property="og:title" content="Garatava — Bodrum">
+    <meta property="og:description" content="Ege lezzetleri, taze balık ve eşsiz atmosfer.">
+    <meta property="og:image" content="/images/logo.png">
+
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --teal-deep: #0E4F5C;
+            --teal: #1B7B8B;
+            --teal-light: #2FA0B3;
+            --amber: #D97A3C;
+            --flame: #C44536;
+            --cream: #F5E9D3;
+            --sand: #E8D9B8;
+            --stone: #C9B89A;
+            --ink: #1A2E33;
+            --ink-soft: #3D5860;
+            --white: #FAF6EE;
         }
 
-        :root {
-            --primary: #D4843C;
-            --secondary: #8B4513;
-            --accent: #F5DEB3;
-            --dark: #2C2C2C;
-            --light: #FFF8F0;
-            --gold: #DAA520;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-            background-color: #FFF8F0;
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            line-height: 1.7;
+            background: var(--white);
+            font-weight: 300;
+            overflow-x: hidden;
         }
 
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: 0.5px; }
 
-        .header-content {
-            max-width: 1200px;
+        a { color: inherit; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+        a:hover { opacity: 0.75; }
+
+        img { max-width: 100%; display: block; }
+
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+
+        /* === Top utility bar === */
+        .topbar {
+            background: var(--teal-deep);
+            color: var(--cream);
+            font-size: 0.85rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .topbar-inner {
+            max-width: 1240px;
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 2rem;
+        .topbar-info { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .topbar-info a, .topbar-info span { display: inline-flex; align-items: center; gap: 0.5rem; opacity: 0.9; }
+        .topbar-info i { color: var(--amber); font-size: 0.9rem; }
+        .topbar-social { display: flex; gap: 1.2rem; align-items: center; }
+        .topbar-social a {
+            width: 30px; height: 30px;
+            border: 1px solid rgba(245,233,211,0.3);
+            border-radius: 50%;
+            display: inline-flex;
             align-items: center;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        .admin-link {
-            background: var(--gold);
-            color: var(--dark);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
+            justify-content: center;
             transition: all 0.3s;
         }
+        .topbar-social a:hover { background: var(--amber); border-color: var(--amber); opacity: 1; }
 
-        .admin-link:hover {
-            opacity: 0.8;
+        /* === Header === */
+        header {
+            background: rgba(250,246,238,0.96);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(14,79,92,0.08);
+            transition: padding 0.3s;
         }
-
-        @media (max-width: 768px) {
-            nav {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-            .header-content {
-                padding: 0 1rem;
-            }
-            .nav-right {
-                gap: 1rem;
-            }
+        .header-content {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+        .brand img { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 14px rgba(14,79,92,0.18); }
+        .brand-text { line-height: 1.1; }
+        .brand-text .name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--teal-deep); letter-spacing: 2px; font-weight: 600; }
+        .brand-text .sub { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--amber); text-transform: uppercase; }
 
-        /* Hero Section */
+        nav { display: flex; gap: 2.2rem; align-items: center; }
+        nav a {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ink);
+            font-weight: 500;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0;
+            width: 0; height: 1px;
+            background: var(--amber);
+            transition: width 0.3s;
+        }
+        nav a:hover { opacity: 1; color: var(--teal-deep); }
+        nav a:hover::after { width: 100%; }
+
+        .reserve-btn {
+            background: var(--amber);
+            color: var(--white);
+            padding: 0.7rem 1.4rem;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .reserve-btn:hover { background: var(--flame); opacity: 1; }
+
+        /* === Hero === */
         .hero {
-            height: 500px;
-            background: linear-gradient(rgba(44, 44, 44, 0.5), rgba(212, 132, 60, 0.4)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B4513" width="1200" height="500"/><circle cx="100" cy="100" r="80" fill="%23D4843C" opacity="0.2"/><circle cx="1100" cy="400" r="120" fill="%23DAA520" opacity="0.15"/></svg>');
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--teal-deep) 0%, var(--ink) 100%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(217,122,60,0.25), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(196,69,54,0.2), transparent 50%),
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><path d='M0 0h20v20H0zm20 20h20v20H20zm20-20h20v20H40zm20 20h20v20H60zm20-20h20v20H80z' fill='%23ffffff' fill-opacity='0.015'/></svg>");
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
+        .hero-logo { width: 180px; height: 180px; margin: 0 auto 2rem; border-radius: 50%; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: fadeInDown 1.2s ease both; }
+        .hero-eyebrow {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.3s ease forwards;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 500;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.5s ease forwards;
+        }
+        .hero h1 span { color: var(--amber); font-style: italic; }
+        .hero-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.7s ease forwards;
+            line-height: 1.5;
+        }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeInUp 1s 0.9s ease forwards; }
+        .btn {
+            padding: 1rem 2.2rem;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .btn-primary { background: var(--amber); color: var(--white); }
+        .btn-primary:hover { background: var(--flame); transform: translateY(-2px); opacity: 1; }
+        .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--white); }
+        .btn-outline:hover { background: var(--white); color: var(--teal-deep); opacity: 1; }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--cream);
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+        .hero-scroll i { display: block; margin-top: 0.5rem; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+
+        /* === Sections === */
+        section { padding: 6rem 0; position: relative; }
+        .section-eyebrow {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--amber);
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            color: var(--teal-deep);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 4rem;
+            gap: 1rem;
+            color: var(--amber);
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 1px;
+            background: var(--amber);
+            opacity: 0.5;
+        }
+
+        /* === About === */
+        .about { background: var(--white); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .about-text p { margin-bottom: 1.2rem; color: var(--ink-soft); font-size: 1.05rem; }
+        .about-text p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            float: left;
+            line-height: 0.9;
+            margin: 0.3rem 0.6rem 0 0;
+            color: var(--amber);
+            font-weight: 600;
+        }
+        .why-card {
+            background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+            padding: 3.5rem 2.5rem;
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(217,122,60,0.15), transparent 60%);
+        }
+        .why-card h3 {
+            font-size: 1.8rem;
+            color: var(--amber);
+            margin-bottom: 2rem;
+            position: relative;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+        .why-list { list-style: none; position: relative; }
+        .why-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(245,233,211,0.15);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+        .why-list li:last-child { border-bottom: none; }
+        .why-list i { color: var(--amber); font-size: 1.1rem; }
+
+        /* === Menu === */
+        .menu {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--sand) 100%);
+            position: relative;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+            margin-top: 1rem;
+        }
+        .menu-category {
+            background: var(--white);
+            padding: 2.5rem;
+            border-top: 3px solid var(--amber);
+            box-shadow: 0 8px 30px rgba(14,79,92,0.07);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .menu-category:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(14,79,92,0.12); }
+        .menu-category h3 {
+            font-size: 1.7rem;
+            color: var(--teal-deep);
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(14,79,92,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-style: italic;
+        }
+        .menu-item {
+            padding: 1rem 0;
+            border-bottom: 1px dashed rgba(14,79,92,0.08);
+        }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--ink);
+            margin-bottom: 0.35rem;
+            font-weight: 500;
+        }
+        .menu-item-desc {
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+        .menu-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--ink-soft);
+            font-size: 1.1rem;
+        }
+
+        /* === Atmosphere / Gallery === */
+        .atmosphere { background: var(--white); }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+        .photo-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+            color: var(--cream);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            letter-spacing: 1px;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--gold);
-            color: var(--dark);
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-            margin: 0.5rem;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .cta-button:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Info Cards */
-        .info-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 3rem 0;
-        }
-
-        .info-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--primary);
-            transition: transform 0.3s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .info-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .info-card p {
-            color: #555;
-            line-height: 1.8;
-        }
-
-        /* About Section */
-        .about {
-            background: linear-gradient(135deg, rgba(212, 132, 60, 0.1) 0%, rgba(245, 222, 179, 0.1) 100%);
-            padding: 4rem 0;
-        }
-
-        .about h2, .menu h2, .contact h2, .reservation h2 {
-            color: var(--secondary);
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            color: #555;
-            line-height: 1.8;
-        }
-
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Menu Section */
-        .menu {
-            padding: 4rem 0;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .menu-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .menu-category h3 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .menu-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px dashed #ddd;
-        }
-
-        .menu-item:last-child {
-            border-bottom: none;
-        }
-
-        .menu-item-name {
-            font-weight: bold;
-            color: var(--dark);
-            font-size: 1.05rem;
-        }
-
-        .menu-item-desc {
-            color: #777;
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
+            font-family: 'Cormorant Garamond', serif;
             font-style: italic;
+            overflow: hidden;
+            cursor: pointer;
         }
-
-        .menu-item-price {
-            color: var(--primary);
-            font-weight: bold;
-            margin-top: 0.5rem;
+        .photo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+        .photo-item:hover img { transform: scale(1.08); }
+        .photo-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(14,79,92,0.85) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            color: var(--white);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
+        .photo-item:hover .overlay { opacity: 1; }
+        .photo-item .overlay h4 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .photo-item .placeholder-icon { font-size: 2.5rem; opacity: 0.3; }
 
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            color: white;
-            padding: 4rem 0;
+        /* === Reservation === */
+        .reservation {
+            background: var(--ink);
+            color: var(--cream);
+            position: relative;
         }
-
-        .contact h2 {
-            color: white;
+        .reservation::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(27,123,139,0.2), transparent 50%);
         }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 10px;
+        .reservation .section-title { color: var(--cream); position: relative; }
+        .form-container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: rgba(245,233,211,0.04);
+            border: 1px solid rgba(245,233,211,0.1);
+            padding: 3rem;
+            position: relative;
             backdrop-filter: blur(10px);
         }
-
-        .contact-info h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .contact-item {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            min-width: 30px;
-        }
-
-        .contact-info a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .contact-info a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        #map {
-            height: 400px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        @media (max-width: 768px) {
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-            #map {
-                height: 300px;
-            }
-        }
-
-        /* Reservation Section */
-        .reservation {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, rgba(212, 132, 60, 0.05) 0%, rgba(245, 222, 179, 0.1) 100%);
-        }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .form-group { display: flex; flex-direction: column; }
         .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            color: var(--amber);
         }
-
         .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        .form-group select,
+        .form-group textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(245,233,211,0.3);
+            padding: 0.8rem 0;
+            color: var(--cream);
             font-family: inherit;
             font-size: 1rem;
             transition: border-color 0.3s;
         }
-
         .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(212, 132, 60, 0.1);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
+        .form-group select:focus,
+        .form-group textarea:focus { outline: none; border-bottom-color: var(--amber); }
+        .form-group select option { background: var(--ink); }
         .submit-btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
             width: 100%;
-            transition: all 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Atmosphere Showcase */
-        .atmosphere {
-            padding: 4rem 0;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .photo-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            background: linear-gradient(135deg, #D4843C, #8B4513);
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: transform 0.3s;
-        }
-
-        .photo-item:hover {
-            transform: scale(1.05);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
-
-        .social-links {
+            background: var(--amber);
+            color: var(--white);
+            padding: 1.2rem;
+            border: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
             margin-top: 1rem;
+            transition: background 0.3s;
         }
-
-        .social-links a {
-            color: var(--gold);
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: opacity 0.3s;
-        }
-
-        .social-links a:hover {
-            opacity: 0.8;
-        }
-
-        /* Success Message */
+        .submit-btn:hover { background: var(--flame); }
         .success-message {
             display: none;
-            background-color: #4CAF50;
-            color: white;
+            background: rgba(46,160,76,0.15);
+            border: 1px solid rgba(46,160,76,0.4);
+            color: #7fdc94;
             padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
+        .success-message.show { display: block; }
 
-        .success-message.show {
-            display: block;
+        /* === Contact === */
+        .contact { background: var(--cream); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 3rem;
+            align-items: stretch;
+        }
+        .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contact-card {
+            background: var(--white);
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            border-left: 3px solid var(--amber);
+            transition: transform 0.3s;
+        }
+        .contact-card:hover { transform: translateX(5px); }
+        .contact-card i { font-size: 1.4rem; color: var(--amber); margin-top: 0.2rem; }
+        .contact-card strong { display: block; font-family: 'Playfair Display', serif; color: var(--teal-deep); margin-bottom: 0.3rem; font-size: 1.05rem; }
+        .contact-card a, .contact-card span { color: var(--ink-soft); font-size: 0.95rem; }
+        #map { min-height: 420px; box-shadow: 0 8px 30px rgba(14,79,92,0.1); }
+        #map iframe { width: 100%; height: 100%; border: 0; }
+
+        /* === Footer === */
+        footer {
+            background: var(--ink);
+            color: var(--stone);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        .footer-logo { width: 90px; height: 90px; margin: 0 auto 1.5rem; border-radius: 50%; }
+        .footer-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); letter-spacing: 4px; margin-bottom: 0.4rem; }
+        .footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--amber); letter-spacing: 3px; margin-bottom: 2rem; }
+        .footer-social { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
+        .footer-social a {
+            width: 42px; height: 42px;
+            border: 1px solid rgba(245,233,211,0.25);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: var(--cream);
+        }
+        .footer-social a:hover { background: var(--amber); border-color: var(--amber); opacity: 1; }
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(245,233,211,0.1);
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            letter-spacing: 1px;
+        }
+        .footer-admin {
+            margin-top: 0.6rem;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            .hero-content p {
-                font-size: 1rem;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            nav {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
+        /* === Reveal animation === */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        /* === Mobile === */
+        @media (max-width: 900px) {
+            .topbar-info { gap: 1rem; font-size: 0.78rem; }
+            .header-content { padding: 0.8rem 1.2rem; }
+            .brand img { height: 44px; width: 44px; }
+            .brand-text .name { font-size: 1.2rem; }
+            .brand-text .sub { font-size: 0.7rem; letter-spacing: 2px; }
+            nav { display: none; }
+            .reserve-btn { padding: 0.6rem 1rem; font-size: 0.7rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-container { padding: 2rem 1.5rem; }
+            section { padding: 4rem 0; }
+            .container { padding: 0 1.2rem; }
+            .hero-logo { width: 130px; height: 130px; }
+        }
+        @media (max-width: 600px) {
+            .topbar { display: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">🍷 Garatava</div>
-            <div class="nav-right">
-                <nav>
-                    <a href="#about">Hakkında</a>
-                    <a href="#menu">Menü</a>
-                    <a href="#atmosphere">Atmosfer</a>
-                    <a href="#reservation">Rezervasyon</a>
-                    <a href="#contact">İletişim</a>
-                </nav>
-                <a href="/admin/" class="admin-link">⚙️ Admin</a>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div>
-                <h1>Garatava</h1>
-                <p>Bodrum'da Sakin, Doğal ve Özgün Bir Deneyim</p>
-                <button class="cta-button" onclick="document.getElementById('reservation').scrollIntoView({behavior: 'smooth'})">Rezervasyon Yap</button>
-                <a href="tel:+905539287494" class="cta-button">Hemen Ara</a>
+    <!-- Top utility bar -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-info">
+                <a href="tel:+905539287494" id="topbar-phone"><i class="fa-solid fa-phone"></i> +90 553 928 74 94</a>
+                <a href="mailto:info@garatava.com" id="topbar-email"><i class="fa-solid fa-envelope"></i> info@garatava.com</a>
+                <span id="topbar-hours"><i class="fa-regular fa-clock"></i> Her gün 18:00 - 02:00</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Quick Info -->
-    <div class="container">
-        <div class="info-section">
-            <div class="info-card">
-                <h3>📍 Konum</h3>
-                <p><strong>Bodrum, Muğla</strong><br>Şehrin sakin tarafında, açık ve kapalı bahçe alanlarıyla doğal atmosfer</p>
-            </div>
-            <div class="info-card">
-                <h3>📞 İletişim</h3>
-                <p><strong>Telefon:</strong> +90 553 928 74 94<br><strong>Email:</strong> info@garatava.com</p>
-            </div>
-            <div class="info-card">
-                <h3>🕐 Açık Saatler</h3>
-                <p><strong>Pazartesi - Pazar:</strong> 11:00 - 23:00<br>Özel etkinlikler için rezervasyon gerekli</p>
+            <div class="topbar-social">
+                <a href="https://instagram.com/garatava" target="_blank" id="topbar-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" id="topbar-facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://wa.me/905539287494" target="_blank" id="topbar-whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </div>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2>Bizi Tanıyın</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Bodrum'un Kalbi</h3>
-                    <p>Garatava, Bodrum'un sakin köşesinde, doğayla iç içe bir meyhane ve restoranda getirir. Hem kapalı hem açık bahçe alanlarımızda, güneş battıktan sonra sıcak ışıkların altında unutulmaz anlar yaşayabilirsiniz.</p>
-                    <p>Geleneksel Türk mutfağının en lezzetli örnekleriyle, taze balık ve deniz ürünleriyle, ve elbette rakıyla bu eşsiz yolculuğa katılın. Her ziyaretin bir hikaye olacağını vaad ediyoruz.</p>
-                    <p>Aile dostlarımız, iş arkadaşlarımız, ve daha birçok misafirperver sizi burada bekliyor!</p>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#top" class="brand">
+                <img src="/images/logo.png" alt="Garatava Bodrum" onerror="this.style.display='none'">
+                <div class="brand-text">
+                    <div class="name">GARATAVA</div>
+                    <div class="sub">Bodrum</div>
                 </div>
-                <div style="background: linear-gradient(135deg, #D4843C, #8B4513); padding: 3rem; border-radius: 10px; color: white; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-                    <h3 style="color: var(--accent); margin-bottom: 1.5rem;">✨ Neden Biz?</h3>
-                    <p style="margin-bottom: 1rem;">🌅 Doğal atmosfer ve sakin ortam</p>
-                    <p style="margin-bottom: 1rem;">🍽️ Taze, lezzetli yemekler</p>
-                    <p style="margin-bottom: 1rem;">🌿 Açık ve kapalı bahçeler</p>
-                    <p>🎉 Özel etkinlikler için uygun</p>
+            </a>
+            <nav>
+                <a href="#about">Hikayemiz</a>
+                <a href="#menu">Menü</a>
+                <a href="#atmosphere">Atmosfer</a>
+                <a href="#contact">İletişim</a>
+            </nav>
+            <a href="#reservation" class="reserve-btn">Rezervasyon</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <img src="/images/logo.png" alt="Garatava" class="hero-logo" onerror="this.style.display='none'">
+            <div class="hero-eyebrow">Bodrum • Meyhane & Restaurant</div>
+            <h1>Ege'nin <span>Ruhu</span><br>Tek Bir Sofrada</h1>
+            <p class="hero-tagline">Taze balık, ev yapımı mezeler ve unutulmaz akşamlar — <br>Bodrum'un kalbinde sizleri bekliyoruz.</p>
+            <div class="hero-buttons">
+                <a href="#reservation" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Rezervasyon Yap</a>
+                <a href="#menu" class="btn btn-outline">Menüyü Keşfet</a>
+            </div>
+        </div>
+        <div class="hero-scroll">Aşağı Kaydır<i class="fa-solid fa-chevron-down"></i></div>
+    </section>
+
+    <!-- About -->
+    <section class="about reveal" id="about">
+        <div class="container">
+            <div class="section-eyebrow">Hikayemiz</div>
+            <h2 class="section-title">Bodrum'un Kalbinden</h2>
+            <div class="section-divider"><i class="fa-solid fa-fire"></i></div>
+
+            <div class="about-grid">
+                <div class="about-text" id="about-text">
+                    <p>Garatava, Bodrum'un sakin köşesinde, doğayla iç içe bir meyhane deneyimi sunar. Hem kapalı hem açık bahçe alanlarımızda, güneş battıktan sonra sıcak ışıkların altında unutulmaz anlar yaşayabilirsiniz.</p>
+                    <p>Geleneksel Türk mutfağının en lezzetli örnekleri, taze balık ve deniz ürünleri ve elbette rakının eşliğinde bu eşsiz yolculuğa katılın. Her ziyaretin bir hikaye olacağını vaad ediyoruz.</p>
+                </div>
+                <div class="why-card">
+                    <h3>Neden Garatava?</h3>
+                    <ul class="why-list">
+                        <li><i class="fa-solid fa-fish"></i><span id="reason1">Günlük taze balık</span></li>
+                        <li><i class="fa-solid fa-bowl-food"></i><span id="reason2">Ev yapımı mezeler</span></li>
+                        <li><i class="fa-solid fa-umbrella-beach"></i><span id="reason3">Deniz manzaralı teras</span></li>
+                        <li><i class="fa-solid fa-music"></i><span id="reason4">Canlı müzik geceleri</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Menu Section -->
-    <section class="menu" id="menu">
+    <!-- Menu -->
+    <section class="menu reveal" id="menu">
         <div class="container">
-            <h2>Menümüz</h2>
-            <div class="menu-grid" id="menuContainer">
-                <!-- Menü admin'den yüklenecek -->
-            </div>
+            <div class="section-eyebrow">Mutfağımız</div>
+            <h2 class="section-title">Menümüz</h2>
+            <div class="section-divider"><i class="fa-solid fa-utensils"></i></div>
+
+            <div class="menu-grid" id="menuContainer"></div>
+            <p class="menu-note">Fiyatlar ve günün özel tariflerimiz için lütfen mekanımızda bizimle iletişime geçin.</p>
         </div>
     </section>
 
-    <!-- Atmosphere Section -->
-    <section class="atmosphere" id="atmosphere">
+    <!-- Atmosphere -->
+    <section class="atmosphere reveal" id="atmosphere">
         <div class="container">
-            <h2>Atmosferimiz</h2>
-            <div class="photo-grid" id="galleryContainer">
-                <!-- Galeri admin'den yüklenecek -->
-            </div>
-            <p style="text-align: center; margin-top: 2rem; color: #666;">Fotoğraflarınızı görmek için Instagram'ımızı takip edin: @garatava_bodrum</p>
+            <div class="section-eyebrow">Atmosfer</div>
+            <h2 class="section-title">Bir Akşamın Hikayesi</h2>
+            <div class="section-divider"><i class="fa-solid fa-wine-glass"></i></div>
+
+            <div class="photo-grid" id="galleryContainer"></div>
         </div>
     </section>
 
-    <!-- Reservation Section -->
-    <section class="reservation" id="reservation">
+    <!-- Reservation -->
+    <section class="reservation reveal" id="reservation">
         <div class="container">
-            <h2>Rezervasyon Yap</h2>
+            <div class="section-eyebrow" style="color: var(--amber);">Bize Katılın</div>
+            <h2 class="section-title">Rezervasyon</h2>
+            <div class="section-divider"><i class="fa-regular fa-calendar"></i></div>
+
             <div class="form-container">
                 <div class="success-message" id="successMessage">
-                    ✓ Rezervasyon isteğiniz alındı! En kısa zamanda sizinle iletişime geçeceğiz.
+                    <i class="fa-solid fa-check-circle"></i> Rezervasyon isteğiniz alındı. En kısa zamanda sizinle iletişime geçeceğiz.
                 </div>
-                <form id="reservationForm">
+                <form id="reservationForm" name="reservation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="reservation">
+                    <p style="display:none"><label>Doldurmayın: <input name="bot-field"></label></p>
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Adınız *</label>
@@ -627,7 +713,6 @@
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group">
                             <label for="date">Tarih *</label>
@@ -638,7 +723,6 @@
                             <input type="time" id="time" name="time" required>
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group">
                             <label for="guests">Kişi Sayısı *</label>
@@ -656,67 +740,52 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mail</label>
+                            <label for="email">E-posta</label>
                             <input type="email" id="email" name="email">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="notes">Özel İstekler / Notlar</label>
-                        <textarea id="notes" name="notes" rows="4" placeholder="Örneğin: Doğum günü kutlaması, diyetler vb..."></textarea>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Doğum günü, alerjiler, özel tercihler..."></textarea>
                     </div>
-
                     <button type="submit" class="submit-btn">Rezervasyon İsteği Gönder</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- Contact -->
+    <section class="contact reveal" id="contact">
         <div class="container">
-            <h2>İletişim & Konum</h2>
-            <div class="contact-content">
+            <div class="section-eyebrow">İletişim</div>
+            <h2 class="section-title">Bizi Bulun</h2>
+            <div class="section-divider"><i class="fa-solid fa-location-dot"></i></div>
+
+            <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Bizi Bulun</h3>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <div>
-                            <strong>Adres</strong><br>
-                            <span id="contact-address">Garatava, Bodrum<br>48400 Bodrum, Muğla<br>Türkiye</span>
-                        </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div><strong>Adres</strong><span id="contact-address">Bodrum, Muğla</span></div>
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <div>
-                            <strong>Telefon</strong><br>
-                            <a href="tel:+905539287494" id="contact-phone">+90 553 928 74 94</a>
-                        </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-phone"></i>
+                        <div><strong>Telefon</strong><a href="tel:+905539287494" id="contact-phone">+90 553 928 74 94</a></div>
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <div>
-                            <strong>E-mail</strong><br>
-                            <a href="mailto:info@garatava.com" id="contact-email">info@garatava.com</a>
-                        </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div><strong>E-posta</strong><a href="mailto:info@garatava.com" id="contact-email">info@garatava.com</a></div>
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">💬</span>
-                        <div>
-                            <strong>WhatsApp</strong><br>
-                            <a href="https://wa.me/905539287494" id="contact-whatsapp">Mesaj Gönder</a>
-                        </div>
+                    <div class="contact-card">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div><strong>WhatsApp</strong><a href="https://wa.me/905539287494" target="_blank" id="contact-whatsapp">Hemen Mesaj Gönder</a></div>
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">⭐</span>
-                        <div>
-                            <strong>Google</strong><br>
-                            <a href="https://g.co/kgs/YOUR_GOOGLE_BUSINESS_ID" target="_blank" id="contact-google">5.0 ⭐ - 5 Yorum</a>
-                        </div>
+                    <div class="contact-card">
+                        <i class="fa-brands fa-instagram"></i>
+                        <div><strong>Instagram</strong><a href="https://instagram.com/garatava" target="_blank" id="contact-instagram">@garatava</a></div>
                     </div>
                 </div>
                 <div id="map">
-                    <iframe width="100%" height="100%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.8570512345678!2d27.4233!3d37.0345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bdb5c5c5c5c5c5%3A0x5c5c5c5c5c5c5c5c!2sGaratava%2C%20Bodrum!5e0!3m2!1str!2str!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12649.0!2d27.4233!3d37.0345!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBodrum!5e0!3m2!1str!2str" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -725,97 +794,130 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Garatava - Bodrum. Tüm hakları saklıdır.</p>
-            <p>Doğal, sakin ve lezzetli bir deneyim için bizi ziyaret edin.</p>
-            <div class="social-links">
-                <a href="https://instagram.com" target="_blank">Instagram</a>
-                <a href="https://facebook.com" target="_blank">Facebook</a>
-                <a href="tel:+905539287494">Telefon</a>
+            <img src="/images/logo.png" alt="Garatava" class="footer-logo" onerror="this.style.display='none'">
+            <div class="footer-name">GARATAVA</div>
+            <div class="footer-sub">Bodrum</div>
+            <div class="footer-social">
+                <a href="https://instagram.com/garatava" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://wa.me/905539287494" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="tel:+905539287494" aria-label="Telefon"><i class="fa-solid fa-phone"></i></a>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> Garatava — Bodrum. Tüm hakları saklıdır.
+                <div class="footer-admin"><a href="/admin/">Yönetim Paneli</a></div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Reservation Form Handling
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Reveal on scroll
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Reservation form (Netlify will capture)
         document.getElementById('reservationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const guests = document.getElementById('guests').value;
-            const email = document.getElementById('email').value;
-            const notes = document.getElementById('notes').value;
-
-            const successMessage = document.getElementById('successMessage');
-            successMessage.classList.add('show');
-
-            this.reset();
-
-            setTimeout(() => {
-                successMessage.classList.remove('show');
-            }, 3000);
-
-            console.log('Rezervasyon:', { name, phone, date, time, guests, email, notes });
+            // Netlify forms work via standard POST — let it submit, but show success
+            // If you want AJAX: prevent default and fetch().
         });
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+        // Smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) { e.preventDefault(); t.scrollIntoView({behavior: 'smooth'}); }
             });
         });
+
+        const emojiMap = {
+            'Mezeler': 'fa-solid fa-bowl-food',
+            'Balık': 'fa-solid fa-fish',
+            'Etli Yemekler': 'fa-solid fa-drumstick-bite',
+            'Tatlılar': 'fa-solid fa-cake-candles',
+            'İçecekler': 'fa-solid fa-wine-glass',
+            'Salatalar': 'fa-solid fa-leaf'
+        };
 
         async function loadData() {
-            const [menuData, galleryData] = await Promise.all([
-                fetch('/_data/menu.json').then(r => r.json()).catch(() => ({items: []})),
-                fetch('/_data/gallery.json').then(r => r.json()).catch(() => ({items: []})),
+            const safeFetch = (url, fallback) => fetch(url).then(r => r.ok ? r.json() : fallback).catch(() => fallback);
+
+            const [restaurant, about, menuData, galleryData] = await Promise.all([
+                safeFetch('/_data/restaurant.json', {}),
+                safeFetch('/_data/about.json', {}),
+                safeFetch('/_data/menu.json', {items: []}),
+                safeFetch('/_data/gallery.json', {items: []}),
             ]);
 
-            const menuContainer = document.getElementById('menuContainer');
-            const categories = {};
-            (menuData.items || []).forEach(item => {
-                (categories[item.category] ||= []).push(item);
-            });
+            // Restaurant info into all the slots
+            const set = (id, val) => { const el = document.getElementById(id); if (el && val) { if (el.tagName === 'A' && (val.startsWith('http') || val.startsWith('mailto') || val.startsWith('tel') || val.startsWith('+'))) el.href = val.startsWith('+') ? `tel:${val.replace(/\s/g,'')}` : val; el.textContent = val.replace(/^(https?:\/\/(www\.)?|mailto:|tel:)/, ''); } };
+            const setHref = (id, href) => { const el = document.getElementById(id); if (el && href) el.href = href; };
 
-            const emojiMap = {'Mezeler': '🥘', 'Balık': '🐟', 'Etli Yemekler': '🥩', 'Tatlılar': '🍰', 'İçecekler': '🍷'};
-            for (const [category, items] of Object.entries(categories)) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'menu-category';
-                const emoji = emojiMap[category] || '🍽️';
-                categoryDiv.innerHTML = `<h3>${emoji} ${category}</h3>`;
-                items.forEach(item => {
-                    categoryDiv.innerHTML += `
-                        <div class="menu-item">
-                            <div class="menu-item-name">${item.name}</div>
-                            <div class="menu-item-desc">${item.description}</div>
-                            <div class="menu-item-price">₺${item.price}</div>
-                        </div>
-                    `;
-                });
-                menuContainer.appendChild(categoryDiv);
+            if (restaurant.phone) {
+                document.getElementById('topbar-phone').innerHTML = `<i class="fa-solid fa-phone"></i> ${restaurant.phone}`;
+                document.getElementById('topbar-phone').href = `tel:${restaurant.phone.replace(/\s/g,'')}`;
+                document.getElementById('contact-phone').textContent = restaurant.phone;
+                document.getElementById('contact-phone').href = `tel:${restaurant.phone.replace(/\s/g,'')}`;
+            }
+            if (restaurant.email) {
+                document.getElementById('topbar-email').innerHTML = `<i class="fa-solid fa-envelope"></i> ${restaurant.email}`;
+                document.getElementById('topbar-email').href = `mailto:${restaurant.email}`;
+                document.getElementById('contact-email').textContent = restaurant.email;
+                document.getElementById('contact-email').href = `mailto:${restaurant.email}`;
+            }
+            if (restaurant.hours) document.getElementById('topbar-hours').innerHTML = `<i class="fa-regular fa-clock"></i> ${restaurant.hours}`;
+            if (restaurant.address) document.getElementById('contact-address').textContent = restaurant.address;
+            if (restaurant.instagram) { setHref('topbar-instagram', restaurant.instagram); setHref('contact-instagram', restaurant.instagram); document.getElementById('contact-instagram').textContent = '@' + restaurant.instagram.replace(/.*instagram\.com\//,'').replace(/\/$/,''); }
+            if (restaurant.facebook) setHref('topbar-facebook', restaurant.facebook);
+            if (restaurant.whatsapp) {
+                const wa = `https://wa.me/${restaurant.whatsapp.replace(/[^0-9]/g,'')}`;
+                setHref('topbar-whatsapp', wa);
+                document.getElementById('contact-whatsapp').href = wa;
             }
 
+            // About reasons
+            ['reason1','reason2','reason3','reason4'].forEach(k => { if (about[k]) document.getElementById(k).textContent = about[k]; });
+
+            // Menu (no prices)
+            const menuContainer = document.getElementById('menuContainer');
+            const categories = {};
+            (menuData.items || []).forEach(item => { (categories[item.category] ||= []).push(item); });
+            for (const [category, items] of Object.entries(categories)) {
+                const div = document.createElement('div');
+                div.className = 'menu-category';
+                const icon = emojiMap[category] || 'fa-solid fa-utensils';
+                let html = `<h3><i class="${icon}"></i> ${category}</h3>`;
+                items.forEach(item => {
+                    html += `
+                        <div class="menu-item">
+                            <div class="menu-item-name">${item.name}</div>
+                            ${item.description ? `<div class="menu-item-desc">${item.description}</div>` : ''}
+                        </div>`;
+                });
+                div.innerHTML = html;
+                menuContainer.appendChild(div);
+            }
+
+            // Gallery
             const galleryContainer = document.getElementById('galleryContainer');
             (galleryData.items || []).forEach(item => {
-                const photoDiv = document.createElement('div');
-                photoDiv.className = 'photo-item';
+                const d = document.createElement('div');
+                d.className = 'photo-item';
                 if (item.image) {
-                    photoDiv.innerHTML = `<img src="${item.image}" alt="${item.title}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"><div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.5);color:white;padding:0.5rem;">${item.title}</div>`;
-                    photoDiv.style.position = 'relative';
+                    d.innerHTML = `
+                        <img src="${item.image}" alt="${item.title || ''}" loading="lazy">
+                        <div class="overlay"><div><h4>${item.title || ''}</h4>${item.description ? `<small>${item.description}</small>` : ''}</div></div>`;
                 } else {
-                    photoDiv.innerHTML = `📷 ${item.title}<br><small>${item.description || ''}</small>`;
+                    d.innerHTML = `<div><i class="fa-regular fa-image placeholder-icon"></i><div style="margin-top:0.6rem;">${item.title || ''}</div></div>`;
                 }
-                galleryContainer.appendChild(photoDiv);
+                galleryContainer.appendChild(d);
             });
         }
 
-        window.addEventListener('load', loadData);
+        loadData();
     </script>
 </body>
 </html>

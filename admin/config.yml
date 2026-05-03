@@ -35,10 +35,9 @@ collections:
             name: "items"
             widget: "list"
             fields:
-              - {label: "Kategori", name: "category", widget: "string", hint: "Örn: Mezeler, Balık, Etli Yemekler"}
+              - {label: "Kategori", name: "category", widget: "select", options: ["Mezeler", "Salatalar", "Balık", "Etli Yemekler", "Tatlılar", "İçecekler"]}
               - {label: "Yemek Adı", name: "name", widget: "string"}
-              - {label: "Açıklama", name: "description", widget: "text"}
-              - {label: "Fiyat (₺)", name: "price", widget: "number"}
+              - {label: "Kısa Açıklama", name: "description", widget: "string", required: false, hint: "Opsiyonel — iştah açıcı kısa tanım"}
 
   - name: "gallery"
     label: "Galeri / Fotoğraflar"

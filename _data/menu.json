@@ -1,8 +1,12 @@
 {
   "items": [
-    {"category": "Mezeler", "name": "Haydari", "description": "Yoğurt, sarımsak ve nane ile", "price": 85},
-    {"category": "Mezeler", "name": "Sıcak Börek", "description": "Ev yapımı, sıcak ve lezzetli", "price": 95},
-    {"category": "Balık", "name": "Izgara Çipura", "description": "Günlük taze, zeytinyağı ve limonlu", "price": 350},
-    {"category": "Balık", "name": "Karides Güveç", "description": "Feta peyniri ve domates soslu", "price": 320}
+    {"category": "Mezeler", "name": "Haydari", "description": "Süzme yoğurt, sarımsak ve nane"},
+    {"category": "Mezeler", "name": "Sıcak Börek", "description": "Ev yapımı, kıvamında ve çıtır"},
+    {"category": "Mezeler", "name": "Atom", "description": "Acılı yoğurt ile özel sosumuz"},
+    {"category": "Salatalar", "name": "Akdeniz Salatası", "description": "Mevsim yeşillikleri, feta, zeytin"},
+    {"category": "Balık", "name": "Izgara Çipura", "description": "Günlük taze, zeytinyağı ve limon ile"},
+    {"category": "Balık", "name": "Karides Güveç", "description": "Feta peyniri ve ev yapımı domates sos"},
+    {"category": "Balık", "name": "Kalamar Tava", "description": "Çıtır, hafif baharatlı"},
+    {"category": "Etli Yemekler", "name": "Kuzu Tandır", "description": "Saatlerce pişmiş, eriyen kıvam"}
   ]
 }
