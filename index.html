@@ -149,10 +149,11 @@
         /* === Hero === */
         .hero {
             position: relative;
-            min-height: 92vh;
+            min-height: 86vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start;     /* logo en üste yakın */
             justify-content: center;
+            padding-top: 6vh;              /* üstten ufak nefes */
             color: var(--white);
             text-align: center;
             overflow: hidden;
@@ -173,10 +174,10 @@
             display: block;
             width: 520px; max-width: 92vw;
             height: auto;
-            margin: 0 auto 1.4rem;
+            margin: 0 auto 1rem;
             object-fit: contain;
             background: transparent;
-            color: var(--cream);
+            color: var(--amber);
             filter: drop-shadow(0 4px 18px rgba(0,0,0,0.35));
             animation: fadeInDown 1.2s ease both;
         }
@@ -769,10 +770,6 @@
         <div class="header-content">
             <a href="#top" class="brand">
                 <img src="/assets/logo.svg" alt="Garatava Bodrum" onerror="this.style.display='none'">
-                <div class="brand-text">
-                    <div class="name">GARATAVA</div>
-                    <div class="sub">Bodrum</div>
-                </div>
             </a>
             <nav id="mainNav">
                 <a href="#about" data-i18n="nav.about">Hikayemiz</a>
