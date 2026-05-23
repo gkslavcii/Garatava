@@ -170,16 +170,38 @@
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
+        /* Hero PNG logo + soft cream halkalı arka plan ışığı (renk çatışmasını yumuşatır) */
+        .hero-logo-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            width: 320px; max-width: 80vw;
+            aspect-ratio: 1 / 1;
+            animation: fadeInDown 1.2s ease both;
+        }
+        .hero-logo-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -20%;
+            background: radial-gradient(circle at center,
+                rgba(245, 233, 211, 0.35) 0%,
+                rgba(245, 233, 211, 0.15) 35%,
+                transparent 65%);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(8px);
+        }
         .hero-logo {
+            position: relative;
+            z-index: 2;
             display: block;
-            width: 520px; max-width: 92vw;
-            height: auto;
-            margin: 0 auto 1rem;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
             background: transparent;
-            color: var(--amber);
-            filter: drop-shadow(0 4px 18px rgba(0,0,0,0.35));
-            animation: fadeInDown 1.2s ease both;
+            filter: drop-shadow(0 6px 22px rgba(0,0,0,0.4));
         }
         .hero-eyebrow {
             font-family: 'Cormorant Garamond', serif;
@@ -541,7 +563,7 @@
             padding: 4rem 0 2rem;
             text-align: center;
         }
-        .footer-logo { display: block; width: 340px; height: auto; max-width: 85%; margin: 0 auto 1.5rem; object-fit: contain; background: transparent; color: var(--cream); }
+        .footer-logo { display: block; width: 160px; height: 160px; max-width: 50%; margin: 0 auto 1.5rem; object-fit: contain; background: transparent; filter: drop-shadow(0 0 26px rgba(245,233,211,0.25)); }
         .footer-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); letter-spacing: 4px; margin-bottom: 0.4rem; }
         .footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--amber); letter-spacing: 3px; margin-bottom: 2rem; }
         .footer-social { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
@@ -591,7 +613,7 @@
             .container { padding: 0 1.2rem; }
             .hero { min-height: calc(100svh - 60px); padding-bottom: 4rem; }
             .hero-content { padding: 0.5rem 1.2rem; }
-            .hero-logo { width: 340px; height: auto; margin-bottom: 0.8rem; }
+            .hero-logo-wrap { width: 220px; margin-bottom: 0.8rem; }
             .hero-eyebrow { font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 0.6rem; }
             .hero h1 { font-size: 2rem; letter-spacing: 2px; margin-bottom: 0.8rem; line-height: 1.2; }
             .hero-tagline { font-size: 1rem; margin-bottom: 1.4rem; line-height: 1.45; }
@@ -728,12 +750,12 @@
         #splash.hide { opacity: 0; visibility: hidden; }
         #splash img {
             display: block;
-            width: 520px;
-            max-width: 90vw;
-            height: auto;
+            width: 280px;
+            max-width: 70vw;
+            height: 280px;
             background: transparent;
             object-fit: contain;
-            color: var(--teal-deep);
+            filter: drop-shadow(0 0 30px rgba(245,233,211,0.4));
             animation: splashPulse 1.6s ease-in-out infinite;
         }
         @keyframes splashPulse {
@@ -746,7 +768,7 @@
 
     <!-- Splash / loading screen -->
     <div id="splash">
-        <img src="/assets/logo.svg" alt="Garatava" onerror="this.style.display='none'">
+        <img src="/images/logo.png" alt="Garatava" onerror="this.style.display='none'">
     </div>
 
     <!-- Top utility bar -->
@@ -802,7 +824,7 @@
     <!-- Hero -->
     <section class="hero" id="top">
         <div class="hero-content">
-            <img src="/assets/logo.svg" alt="Garatava" class="hero-logo" onerror="this.style.display='none'">
+            <div class="hero-logo-wrap"><img src="/images/logo.png" alt="Garatava" class="hero-logo" onerror="this.style.display='none'"></div>
             <div class="hero-eyebrow" data-i18n="hero.eyebrow">Bodrum • Kahvaltı & Restaurant</div>
             <h1 data-i18n-html="hero.title">Ege'nin <span>Ruhu</span><br>Tek Bir Sofrada</h1>
             <p class="hero-tagline" data-i18n-html="hero.tagline">Taze balık, ev yapımı mezeler ve unutulmaz akşamlar — <br>Bodrum'un kalbinde sizleri bekliyoruz.</p>
@@ -977,7 +999,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <img src="/assets/logo.svg" alt="Garatava" class="footer-logo" onerror="this.style.display='none'">
+            <img src="/images/logo.png" alt="Garatava" class="footer-logo" onerror="this.style.display='none'">
             <div class="footer-name">GARATAVA</div>
             <div class="footer-sub">Bodrum</div>
             <div class="footer-social">
