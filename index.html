@@ -108,7 +108,7 @@
             align-items: center;
             gap: 0.9rem;
         }
-        .brand img { height: 44px; width: auto; max-width: 200px; object-fit: contain; background: transparent; color: var(--teal-deep); }
+        .brand img { height: 64px; width: auto; max-width: 240px; object-fit: contain; background: transparent; color: var(--teal-deep); display: block; }
         .brand-text { line-height: 1.1; }
         .brand-text .name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--teal-deep); letter-spacing: 2px; font-weight: 600; }
         .brand-text .sub { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--amber); text-transform: uppercase; }
@@ -169,7 +169,17 @@
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
-        .hero-logo { width: 420px; max-width: 90vw; height: auto; margin: 0 auto 1.2rem; object-fit: contain; background: transparent; animation: fadeInDown 1.2s ease both; color: var(--cream); filter: drop-shadow(0 2px 12px rgba(0,0,0,0.25)); }
+        .hero-logo {
+            display: block;
+            width: 440px; max-width: 90vw;
+            height: auto;
+            margin: 0 auto 1.4rem;
+            object-fit: contain;
+            background: transparent;
+            color: var(--cream);
+            filter: drop-shadow(0 4px 18px rgba(0,0,0,0.35));
+            animation: fadeInDown 1.2s ease both;
+        }
         .hero-eyebrow {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
@@ -530,7 +540,7 @@
             padding: 4rem 0 2rem;
             text-align: center;
         }
-        .footer-logo { width: 280px; height: auto; max-width: 80%; margin: 0 auto 1.5rem; object-fit: contain; background: transparent; color: var(--cream); }
+        .footer-logo { display: block; width: 280px; height: auto; max-width: 80%; margin: 0 auto 1.5rem; object-fit: contain; background: transparent; color: var(--cream); }
         .footer-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); letter-spacing: 4px; margin-bottom: 0.4rem; }
         .footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--amber); letter-spacing: 3px; margin-bottom: 2rem; }
         .footer-social { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
@@ -568,7 +578,7 @@
         @media (max-width: 900px) {
             .topbar-info { gap: 1rem; font-size: 0.78rem; }
             .header-content { padding: 0.8rem 1.2rem; }
-            .brand img { height: 36px; }
+            .brand img { height: 48px; }
             .brand-text .name { font-size: 1.2rem; }
             .brand-text .sub { font-size: 0.7rem; letter-spacing: 2px; }
             nav { display: none; }
@@ -716,8 +726,9 @@
         }
         #splash.hide { opacity: 0; visibility: hidden; }
         #splash img {
-            width: 420px;
-            max-width: 80vw;
+            display: block;
+            width: 460px;
+            max-width: 85vw;
             height: auto;
             background: transparent;
             object-fit: contain;

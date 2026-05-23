@@ -1,53 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" role="img" aria-label="GARATAVA Bodrum">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="GARATAVA Bodrum">
   <defs>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#E89A5A"/>
+      <stop offset="100%" stop-color="#C44536"/>
+    </linearGradient>
+    <linearGradient id="leafGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#D97A3C"/>
+      <stop offset="100%" stop-color="#9C2F22"/>
+    </linearGradient>
+    <linearGradient id="oliveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1B7B8B"/>
+      <stop offset="100%" stop-color="#0E4F5C"/>
+    </linearGradient>
     <style>
-      .leaf { fill: currentColor; opacity: 0.92; }
-      .stem { stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; opacity: 0.85; }
-      .olive { fill: currentColor; opacity: 0.55; }
-      .wm { font-family: 'Playfair Display', 'Times New Roman', serif; font-style: italic; fill: currentColor; }
-      .ln { stroke: currentColor; stroke-width: 1; fill: none; opacity: 0.35; }
-      .tag { font-family: 'Inter', 'Arial', sans-serif; fill: currentColor; opacity: 0.7; letter-spacing: 10px; }
+      .wm    { font-family: 'Playfair Display', 'Times New Roman', serif; font-style: italic; fill: currentColor; }
+      .tag   { font-family: 'Inter', 'Arial', sans-serif; fill: #D97A3C; letter-spacing: 14px; }
+      .ln    { stroke: currentColor; stroke-width: 1; fill: none; opacity: 0.4; }
+      .stem  { stroke: #0E4F5C; stroke-width: 2.6; fill: none; stroke-linecap: round; }
+      .midOlive { fill: url(#oliveGrad); }
     </style>
   </defs>
 
-  <!-- ZEYTİN DALI — sol -->
-  <g transform="translate(120, 80)">
-    <!-- ana gövde -->
-    <path class="stem" d="M0 0 Q 60 -8, 130 -2"/>
-    <!-- yapraklar (üst) -->
-    <ellipse class="leaf" cx="22" cy="-10" rx="13" ry="4.5" transform="rotate(-22 22 -10)"/>
-    <ellipse class="leaf" cx="55" cy="-14" rx="14" ry="4.8" transform="rotate(-15 55 -14)"/>
-    <ellipse class="leaf" cx="90" cy="-12" rx="13" ry="4.5" transform="rotate(-8 90 -12)"/>
-    <ellipse class="leaf" cx="120" cy="-8" rx="12" ry="4.2" transform="rotate(-4 120 -8)"/>
-    <!-- yapraklar (alt) -->
-    <ellipse class="leaf" cx="35" cy="8" rx="13" ry="4.5" transform="rotate(18 35 8)"/>
-    <ellipse class="leaf" cx="72" cy="10" rx="14" ry="4.8" transform="rotate(10 72 10)"/>
-    <ellipse class="leaf" cx="105" cy="8" rx="12" ry="4.2" transform="rotate(5 105 8)"/>
-    <!-- zeytin meyveleri -->
-    <ellipse class="olive" cx="48" cy="-2" rx="3.5" ry="4.5"/>
-    <ellipse class="olive" cx="82" cy="0" rx="3.5" ry="4.5"/>
+  <!-- ============ ZEYTİN DALI MOTİFİ (üst, ortalı) ============ -->
+  <g transform="translate(240, 90)">
+    <!-- ana dal: kavisli, V şeklinde aşağıya iniyor -->
+    <path class="stem" d="M -70 -28 Q -35 -10, 0 18 Q 35 -10, 70 -28"/>
+
+    <!-- SOL KOL — yapraklar -->
+    <g transform="translate(-70, -28)">
+      <ellipse fill="url(#leafGrad)"  cx="6"  cy="-6"  rx="22" ry="7.5" transform="rotate(-50  6 -6)"/>
+      <ellipse fill="url(#leafGrad2)" cx="22" cy="0"   rx="20" ry="7"   transform="rotate(-30  22 0)"/>
+      <ellipse fill="url(#leafGrad)"  cx="36" cy="10"  rx="18" ry="6.5" transform="rotate(-12  36 10)"/>
+    </g>
+
+    <!-- SAĞ KOL — yapraklar (aynaya çevrilmiş) -->
+    <g transform="translate(70, -28) scale(-1, 1)">
+      <ellipse fill="url(#leafGrad)"  cx="6"  cy="-6"  rx="22" ry="7.5" transform="rotate(-50  6 -6)"/>
+      <ellipse fill="url(#leafGrad2)" cx="22" cy="0"   rx="20" ry="7"   transform="rotate(-30  22 0)"/>
+      <ellipse fill="url(#leafGrad)"  cx="36" cy="10"  rx="18" ry="6.5" transform="rotate(-12  36 10)"/>
+    </g>
+
+    <!-- merkez nokta: tek zeytin meyvesi (teal) -->
+    <ellipse class="midOlive" cx="0" cy="18" rx="6" ry="8"/>
+    <!-- meyve üzerinde küçük parıltı -->
+    <ellipse fill="#FAF6EE" opacity="0.4" cx="-2" cy="15" rx="1.5" ry="2.5"/>
   </g>
 
-  <!-- ZEYTİN DALI — sağ (aynaya çevrilmiş) -->
-  <g transform="translate(480, 80) scale(-1, 1)">
-    <path class="stem" d="M0 0 Q 60 -8, 130 -2"/>
-    <ellipse class="leaf" cx="22" cy="-10" rx="13" ry="4.5" transform="rotate(-22 22 -10)"/>
-    <ellipse class="leaf" cx="55" cy="-14" rx="14" ry="4.8" transform="rotate(-15 55 -14)"/>
-    <ellipse class="leaf" cx="90" cy="-12" rx="13" ry="4.5" transform="rotate(-8 90 -12)"/>
-    <ellipse class="leaf" cx="120" cy="-8" rx="12" ry="4.2" transform="rotate(-4 120 -8)"/>
-    <ellipse class="leaf" cx="35" cy="8" rx="13" ry="4.5" transform="rotate(18 35 8)"/>
-    <ellipse class="leaf" cx="72" cy="10" rx="14" ry="4.8" transform="rotate(10 72 10)"/>
-    <ellipse class="leaf" cx="105" cy="8" rx="12" ry="4.2" transform="rotate(5 105 8)"/>
-    <ellipse class="olive" cx="48" cy="-2" rx="3.5" ry="4.5"/>
-    <ellipse class="olive" cx="82" cy="0" rx="3.5" ry="4.5"/>
-  </g>
+  <!-- ============ WORDMARK ============ -->
+  <text class="wm" x="240" y="208" text-anchor="middle" font-size="62" font-weight="500" letter-spacing="8">GARATAVA</text>
 
-  <!-- WORDMARK -->
-  <text class="wm" x="300" y="160" text-anchor="middle" font-size="64" font-weight="500" letter-spacing="6">GARATAVA</text>
-
-  <!-- alt ince çizgi -->
-  <line class="ln" x1="200" y1="185" x2="400" y2="185"/>
-
-  <!-- TAGLINE -->
-  <text class="tag" x="300" y="210" text-anchor="middle" font-size="11" font-weight="500">B O D R U M</text>
+  <!-- ============ DIVIDER + TAGLINE ============ -->
+  <line class="ln" x1="170" y1="232" x2="216" y2="232"/>
+  <text class="tag" x="240" y="244" text-anchor="middle" font-size="11" font-weight="500">BODRUM</text>
+  <line class="ln" x1="264" y1="232" x2="310" y2="232"/>
 </svg>
