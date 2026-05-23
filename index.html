@@ -15,8 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@280;380;480;580&family=Inter:wght@280;380;480;580&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
     <style>
         :root {
             --teal-deep: #0E4F5C;
@@ -642,6 +640,46 @@
         .header-actions .icon-btn.icon-instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: transparent; }
         .header-actions .icon-btn.icon-whatsapp:hover { background: #25D366; border-color: #25D366; }
 
+        /* === Hamburger + mobile drawer === */
+        .hamburger-btn {
+            display: none;
+            background: transparent;
+            border: 1.5px solid rgba(26, 46, 51, 0.15);
+            color: var(--ink);
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .hamburger-btn:hover { background: var(--teal-deep); color: var(--white); border-color: var(--teal-deep); }
+        .mobile-drawer {
+            display: none;
+            position: absolute;
+            top: 100%; left: 0; right: 0;
+            background: var(--white);
+            border-top: 1px solid rgba(26, 46, 51, 0.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            padding: 0.5rem 0;
+            z-index: 999;
+        }
+        .mobile-drawer.open { display: block; }
+        .mobile-drawer a {
+            display: block;
+            padding: 1rem 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--ink);
+            border-bottom: 1px solid rgba(26, 46, 51, 0.05);
+        }
+        .mobile-drawer a:last-child { border-bottom: none; }
+        .mobile-drawer a:hover { background: var(--cream); color: var(--teal-deep); }
+
+        @media (max-width: 900px) {
+            #mainNav { display: none; }
+            .hamburger-btn { display: inline-flex; align-items: center; justify-content: center; }
+        }
+
         /* Directions button on map */
         .map-wrap { position: relative; min-height: 420px; }
         .directions-btn {
@@ -724,10 +762,10 @@
                     <div class="sub">Bodrum</div>
                 </div>
             </a>
-            <nav>
+            <nav id="mainNav">
                 <a href="#about" data-i18n="nav.about">Hikayemiz</a>
-                <a href="#menu" data-i18n="nav.menu">Menü</a>
-                <a href="#atmosphere" data-i18n="nav.atmosphere">Atmosfer</a>
+                <a href="/menu" data-i18n="nav.menu">Menü</a>
+                <a href="#reservation" data-i18n="nav.reservation">Rezervasyon</a>
                 <a href="#contact" data-i18n="nav.contact">İletişim</a>
             </nav>
             <div class="header-actions">
@@ -737,7 +775,15 @@
                 <a href="https://www.instagram.com/garatavabodrum?igsh=MWdiZnQwanVkOGNxZw==" target="_blank" class="icon-btn icon-instagram" id="header-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://wa.me/905539287494" target="_blank" class="icon-btn icon-whatsapp" id="header-whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                 <a href="tel:+905539287494" class="icon-btn" id="header-phone" aria-label="Telefon"><i class="fa-solid fa-phone"></i></a>
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menüyü aç"><i class="fa-solid fa-bars"></i></button>
             </div>
+        </div>
+        <!-- Mobile drawer -->
+        <div class="mobile-drawer" id="mobileDrawer">
+            <a href="#about">Hikayemiz</a>
+            <a href="/menu">Menü</a>
+            <a href="#reservation">Rezervasyon</a>
+            <a href="#contact">İletişim</a>
         </div>
     </header>
 
@@ -750,7 +796,7 @@
             <p class="hero-tagline" data-i18n-html="hero.tagline">Taze balık, ev yapımı mezeler ve unutulmaz akşamlar — <br>Bodrum'un kalbinde sizleri bekliyoruz.</p>
             <div class="hero-buttons">
                 <a href="#reservation" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> <span data-i18n="hero.btnReserve">Rezervasyon Yap</span></a>
-                <a href="#menu" class="btn btn-outline" data-i18n="hero.btnMenu">Menüyü Keşfet</a>
+                <a href="/menu" class="btn btn-outline" data-i18n="hero.btnMenu">Menüyü Keşfet</a>
             </div>
         </div>
         <div class="hero-scroll"><span data-i18n="hero.scroll">Aşağı Kaydır</span><i class="fa-solid fa-chevron-down"></i></div>
@@ -782,15 +828,18 @@
         </div>
     </section>
 
-    <!-- Menu -->
-    <section class="menu reveal" id="menu">
+    <!-- Menu teaser → tam menü ayrı sayfada -->
+    <section class="menu-teaser reveal" id="menu">
         <div class="container">
-            <div class="section-eyebrow" data-i18n="menu.eyebrow">Mutfağımız</div>
-            <h2 class="section-title" data-i18n="menu.title">Menümüz</h2>
+            <div class="section-eyebrow">Mutfağımız</div>
+            <h2 class="section-title">Menümüz</h2>
             <div class="section-divider"><i class="fa-solid fa-utensils"></i></div>
-
-            <div class="menu-grid" id="menuContainer"></div>
-            <p class="menu-note" data-i18n="menu.note">Fiyatlar ve günün özel tariflerimiz için lütfen mekanımızda bizimle iletişime geçin.</p>
+            <p style="text-align:center;max-width:640px;margin:0 auto 2rem;color:var(--ink-soft);font-size:1.05rem;">
+                Bodrum'un yerel lezzetlerinden taze deniz ürünlerine, ev yapımı mezelerden mevsim salatalarına — tüm menümüzü keşfedin.
+            </p>
+            <div style="text-align:center;">
+                <a href="/menu" class="btn btn-primary"><i class="fa-solid fa-utensils"></i> <span>Tam Menüyü Gör</span></a>
+            </div>
         </div>
     </section>
 
@@ -1091,10 +1140,9 @@
         async function loadData() {
             const safeFetch = (url, fallback) => fetch(url).then(r => r.ok ? r.json() : fallback).catch(() => fallback);
 
-            const [restaurant, about, menuData, galleryData] = await Promise.all([
+            const [restaurant, about, galleryData] = await Promise.all([
                 safeFetch('/_data/restaurant.json', {}),
                 safeFetch('/_data/about.json', {}),
-                safeFetch('/_data/menu.json', {items: []}),
                 safeFetch('/_data/gallery.json', {items: []}),
             ]);
 
@@ -1140,25 +1188,7 @@
                 document.getElementById('about-text').innerHTML = html;
             }
 
-            // Menu (no prices)
-            const menuContainer = document.getElementById('menuContainer');
-            const categories = {};
-            (menuData.items || []).forEach(item => { (categories[item.category] ||= []).push(item); });
-            for (const [category, items] of Object.entries(categories)) {
-                const div = document.createElement('div');
-                div.className = 'menu-category';
-                const icon = emojiMap[category] || 'fa-solid fa-utensils';
-                let html = `<h3><i class="${icon}"></i> ${category}</h3>`;
-                items.forEach(item => {
-                    html += `
-                        <div class="menu-item">
-                            <div class="menu-item-name">${item.name}</div>
-                            ${item.description ? `<div class="menu-item-desc">${item.description}</div>` : ''}
-                        </div>`;
-                });
-                div.innerHTML = html;
-                menuContainer.appendChild(div);
-            }
+            // Menü artık ayrı sayfada (/menu) — burada render yok.
 
             // Gallery
             const galleryContainer = document.getElementById('galleryContainer');
@@ -1177,6 +1207,21 @@
         }
 
         loadData();
+
+        // === Hamburger menü toggle ===
+        (function () {
+            const btn = document.getElementById('hamburgerBtn');
+            const drawer = document.getElementById('mobileDrawer');
+            if (!btn || !drawer) return;
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                drawer.classList.toggle('open');
+            });
+            // Dışarı tıklayınca kapat
+            document.addEventListener('click', () => drawer.classList.remove('open'));
+            // Drawer linke tıklayınca kapat
+            drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+        })();
     </script>
 </body>
 </html>

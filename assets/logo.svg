@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" role="img" aria-label="GARATAVA">
+  <defs>
+    <style>
+      .wm { font-family: 'Playfair Display', 'Times New Roman', serif; font-style: italic; fill: currentColor; }
+      .ln { stroke: currentColor; stroke-width: 1.2; fill: none; opacity: 0.45; }
+      .tag { font-family: 'Inter', sans-serif; fill: currentColor; opacity: 0.7; letter-spacing: 6px; }
+    </style>
+  </defs>
+  <!-- üst ince çizgi -->
+  <line class="ln" x1="60" y1="22" x2="420" y2="22"/>
+  <!-- wordmark -->
+  <text class="wm" x="240" y="70" text-anchor="middle" font-size="44" font-weight="400">GARATAVA</text>
+  <!-- alt ince çizgi -->
+  <line class="ln" x1="60" y1="86" x2="420" y2="86"/>
+  <!-- küçük tagline -->
+  <text class="tag" x="240" y="105" text-anchor="middle" font-size="9" font-weight="400">B O D R U M</text>
+</svg>
