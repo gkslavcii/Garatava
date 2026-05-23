@@ -46,40 +46,12 @@ a { color: inherit; text-decoration: none; }
     transition: background 0.2s;
 }
 .m-back:hover { background: rgba(245, 233, 211, 0.22); }
-.m-logo-wrap {
-    position: relative;
-    display: inline-block;
-    width: 80vw;
-    max-width: 380px;
-    aspect-ratio: 4.2 / 1;
-    overflow: hidden;
-    vertical-align: middle;
-}
-.m-logo-wrap::before {
-    content: '';
-    position: absolute;
-    left: 15%; right: 15%;
-    top: 18%; bottom: 18%;
-    background: radial-gradient(ellipse at center,
-        rgba(217, 122, 60, 0.22) 0%,
-        rgba(245, 233, 211, 0.1) 40%,
-        transparent 75%);
-    filter: blur(10px);
-    z-index: 0;
-    pointer-events: none;
-}
 .m-logo-img {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
     display: block;
-    width: 100%; height: 100%;
-    object-fit: contain;
-    transform: scale(3);
-    transform-origin: center;
-    filter:
-        drop-shadow(0 0 1px rgba(245, 233, 211, 0.5))
-        drop-shadow(0 0 4px rgba(217, 122, 60, 0.35));
+    width: 240px;
+    max-width: 75vw;
+    height: auto;
+    margin: 0 auto;
 }
 
 /* ===== STICKY KATEGORİ TABS ===== */

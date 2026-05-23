@@ -170,44 +170,14 @@
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
-        /* Hero PNG logo — agresif crop ile cream çerçeve tamamen ekrandan dışarı çıkar.
-           Aspect 5.5:1 + scale 3.2 → görünen kısımda sadece wordmark + zeytin motifleri. */
-        .hero-logo-wrap {
-            position: relative;
-            margin: 0 auto 1.4rem;
-            width: 96vw; max-width: 1180px;
-            aspect-ratio: 5.5 / 1;
-            overflow: hidden;
-            animation: fadeInDown 1.2s ease both;
-        }
-        .hero-logo-wrap::before {
-            /* harflerin arkasında çok ince izli amber parlama */
-            content: '';
-            position: absolute;
-            left: 15%; right: 15%;
-            top: 18%; bottom: 18%;
-            background: radial-gradient(ellipse at center,
-                rgba(217, 122, 60, 0.32) 0%,
-                rgba(245, 233, 211, 0.12) 38%,
-                transparent 75%);
-            filter: blur(18px);
-            z-index: 1;
-            pointer-events: none;
-        }
+        /* Hero logo — sade. Hiçbir efekt yok, sadece PNG. */
         .hero-logo {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
             display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: transparent;
-            transform: scale(3.2);
-            transform-origin: center;
-            filter:
-                drop-shadow(0 0 1px rgba(245, 233, 211, 0.55))
-                drop-shadow(0 0 5px rgba(217, 122, 60, 0.45));
+            width: 520px;
+            max-width: 90vw;
+            height: auto;
+            margin: 0 auto 1.4rem;
+            animation: fadeInDown 1.2s ease both;
         }
         .hero-eyebrow {
             font-family: 'Cormorant Garamond', serif;
@@ -569,7 +539,7 @@
             padding: 4rem 0 2rem;
             text-align: center;
         }
-        .footer-logo { display: block; width: 160px; height: 160px; max-width: 50%; margin: 0 auto 1.5rem; object-fit: contain; background: transparent; filter: drop-shadow(0 0 26px rgba(245,233,211,0.25)); }
+        .footer-logo { display: block; width: 220px; max-width: 70%; height: auto; margin: 0 auto 1.5rem; }
         .footer-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); letter-spacing: 4px; margin-bottom: 0.4rem; }
         .footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--amber); letter-spacing: 3px; margin-bottom: 2rem; }
         .footer-social { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
@@ -619,8 +589,7 @@
             .container { padding: 0 1.2rem; }
             .hero { min-height: calc(100svh - 60px); padding-bottom: 4rem; }
             .hero-content { padding: 0.5rem 1.2rem; }
-            .hero-logo-wrap { width: 98vw; aspect-ratio: 4.2 / 1; margin-bottom: 0.6rem; }
-            .hero-logo { transform: scale(3); }
+            .hero-logo { width: 340px; max-width: 92vw; margin-bottom: 0.8rem; }
             .hero-eyebrow { font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 0.6rem; }
             .hero h1 { font-size: 2rem; letter-spacing: 2px; margin-bottom: 0.8rem; line-height: 1.2; }
             .hero-tagline { font-size: 1rem; margin-bottom: 1.4rem; line-height: 1.45; }
@@ -757,12 +726,9 @@
         #splash.hide { opacity: 0; visibility: hidden; }
         #splash img {
             display: block;
-            width: 280px;
-            max-width: 70vw;
-            height: 280px;
-            background: transparent;
-            object-fit: contain;
-            filter: drop-shadow(0 0 30px rgba(245,233,211,0.4));
+            width: 360px;
+            max-width: 80vw;
+            height: auto;
             animation: splashPulse 1.6s ease-in-out infinite;
         }
         @keyframes splashPulse {
@@ -831,7 +797,7 @@
     <!-- Hero -->
     <section class="hero" id="top">
         <div class="hero-content">
-            <div class="hero-logo-wrap"><img src="/images/logo.png" alt="Garatava" class="hero-logo" onerror="this.style.display='none'"></div>
+            <img src="/images/logo.png" alt="Garatava" class="hero-logo" onerror="this.style.display='none'">
             <div class="hero-eyebrow" data-i18n="hero.eyebrow">Bodrum • Kahvaltı & Restaurant</div>
             <h1 data-i18n-html="hero.title">Ege'nin <span>Ruhu</span><br>Tek Bir Sofrada</h1>
             <p class="hero-tagline" data-i18n-html="hero.tagline">Taze balık, ev yapımı mezeler ve unutulmaz akşamlar — <br>Bodrum'un kalbinde sizleri bekliyoruz.</p>
