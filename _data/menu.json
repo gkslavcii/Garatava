@@ -1,34 +1,237 @@
 {
-  "items": [
+  "updatedAt": "2026-05-23T11:42:01.6239659Z",
+  "businessName": "GARATAVA",
+  "categories": [
     {
-      "category": "Mezeler",
-      "name": "Haydari",
-      "description": "Süzme yoğurt, sarımsak ve nane"
+      "name": "Ana Yemek",
+      "sortOrder": 1,
+      "products": [
+        {
+          "name": "Dana Rosto",
+          "price": 650.00,
+          "description": ""
+        },
+        {
+          "name": "Fajita Et",
+          "price": 620.00,
+          "description": ""
+        },
+        {
+          "name": "Çoban Kavurma",
+          "price": 650.00,
+          "description": ""
+        },
+        {
+          "name": "Dana Antrikot",
+          "price": 680.00,
+          "description": ""
+        },
+        {
+          "name": "Dana Bonfile",
+          "price": 680.00,
+          "description": ""
+        },
+        {
+          "name": "Et Sote",
+          "price": 620.00,
+          "description": ""
+        },
+        {
+          "name": "Dana Ciğer",
+          "price": 550.00,
+          "description": ""
+        },
+        {
+          "name": "Tavuk Izgara",
+          "price": 440.00,
+          "description": ""
+        },
+        {
+          "name": "Köfte Izgara",
+          "price": 620.00,
+          "description": ""
+        }
+      ]
     },
     {
-      "category": "Mezeler",
-      "name": "Sıcak Börek",
-      "description": "Ev yapımı, kıvamında ve çıtır"
+      "name": "Başlangıç",
+      "sortOrder": 2,
+      "products": [
+        {
+          "name": "Mercimek Çorba",
+          "price": 140.00,
+          "description": ""
+        }
+      ]
     },
     {
-      "category": "Mezeler",
-      "name": "Atom",
-      "description": "Acılı yoğurt ile özel sosumuz"
+      "name": "Şaraplar",
+      "sortOrder": 3,
+      "products": [
+        {
+          "name": "Angora Kırmızı 75cl",
+          "price": 780.00,
+          "description": ""
+        }
+      ]
     },
     {
-      "category": "Salatalar",
-      "name": "Akdeniz Salatası",
-      "description": "Mevsim yeşillikleri, feta, zeytin"
+      "name": "Tatlılar",
+      "sortOrder": 4,
+      "products": [
+        {
+          "name": "Dondurmalı İrmik",
+          "price": 230.00,
+          "description": ""
+        },
+        {
+          "name": "Künefe",
+          "price": 210.00,
+          "description": ""
+        }
+      ]
     },
     {
-      "category": "Etli Yemekler",
-      "name": "Kuzu Tandır",
-      "description": "Saatlerce pişmiş, eriyen kıvam"
+      "name": "Sıcak İçecekler",
+      "sortOrder": 5,
+      "products": [
+        {
+          "name": "Çay",
+          "price": 45.00,
+          "description": ""
+        },
+        {
+          "name": "Türk Kahvesi",
+          "price": 60.00,
+          "description": ""
+        },
+        {
+          "name": "Bitki Çayı",
+          "price": 90.00,
+          "description": ""
+        },
+        {
+          "name": "Filtre Kahve",
+          "price": 150.00,
+          "description": ""
+        }
+      ]
     },
     {
-      "category": "Salatalar",
-      "name": "Ersen Şefin speciali",
-      "description": "şefin enfes salatası"
+      "name": "Soğuk İçecekler",
+      "sortOrder": 6,
+      "products": [
+        {
+          "name": "Su",
+          "price": 25.00,
+          "description": ""
+        },
+        {
+          "name": "Ayran",
+          "price": 25.00,
+          "description": ""
+        },
+        {
+          "name": "Sıkma Portakal",
+          "price": 120.00,
+          "description": ""
+        },
+        {
+          "name": "Gazlı İçecek",
+          "price": 90.00,
+          "description": ""
+        },
+        {
+          "name": "Ice Tea",
+          "price": 90.00,
+          "description": ""
+        },
+        {
+          "name": "Şalgam Suyu",
+          "price": 70.00,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Rakılar",
+      "sortOrder": 7,
+      "products": [
+        {
+          "name": "Beylerbeyi Göbek Rakısı 20cl",
+          "price": 700.00,
+          "description": ""
+        },
+        {
+          "name": "Beylerbeyi Göbek Rakısı 70cl",
+          "price": 1800.00,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Biralar",
+      "sortOrder": 8,
+      "products": [
+        {
+          "name": "Efes Pilsen 50cl",
+          "price": 230.00,
+          "description": ""
+        },
+        {
+          "name": "Tuborg Gold 50cl",
+          "price": 230.00,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Mezeler",
+      "sortOrder": 9,
+      "products": [
+        {
+          "name": "Atom",
+          "price": 250.00,
+          "description": ""
+        },
+        {
+          "name": "Havuç Tarator",
+          "price": 250.00,
+          "description": ""
+        },
+        {
+          "name": "Haydari",
+          "price": 250.00,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Salatalar",
+      "sortOrder": 10,
+      "products": [
+        {
+          "name": "Çoban Salata",
+          "price": 230.00,
+          "description": ""
+        },
+        {
+          "name": "Peksimetli Köy Peyniri",
+          "price": 300.00,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Mevsimler Ürünler",
+      "sortOrder": 13,
+      "products": [
+        {
+          "name": "Fırında Mantar",
+          "price": 450.00,
+          "description": ""
+        }
+      ]
     }
   ]
 }
