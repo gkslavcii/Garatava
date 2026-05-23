@@ -25,12 +25,12 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 
-/* ===== HEADER (logo banner) ===== */
+/* ===== HEADER (logo banner) — kompakt ===== */
 .m-header {
     position: relative;
     background: var(--teal-deep);
     color: var(--cream);
-    padding: 1.6rem 1rem 1.4rem;
+    padding: 0.7rem 1rem 0.6rem;
     text-align: center;
 }
 .m-back {
@@ -48,8 +48,8 @@ a { color: inherit; text-decoration: none; }
 .m-back:hover { background: rgba(245, 233, 211, 0.22); }
 .m-logo-img {
     display: block;
-    width: 280px;
-    max-width: 70vw;
+    width: 240px;
+    max-width: 68vw;
     height: auto;
     margin: 0 auto;
     color: var(--cream);
@@ -167,7 +167,8 @@ a { color: inherit; text-decoration: none; }
 }
 .m-pdesc {
     font-family: 'Inter', sans-serif;
-    font-size: 0.8125rem;       /* 13px — küçük, ince */
+    font-style: italic;          /* italik — kullanıcı isteği */
+    font-size: 0.8125rem;
     color: var(--muted);
     margin-top: 0.4rem;
     font-weight: 380;
