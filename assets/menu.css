@@ -135,10 +135,10 @@ a { color: inherit; text-decoration: none; }
     opacity: 0.6;
 }
 
-/* Ürün kartı */
+/* Ürün kartı — finedine tarzı sade tipografi (tek font ailesi, sabit hiyerarşi) */
 .m-product {
-    padding: 1rem 0;
-    border-bottom: 1px dashed var(--line);
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
 }
 .m-product:last-child { border-bottom: none; }
 .m-prow {
@@ -148,26 +148,31 @@ a { color: inherit; text-decoration: none; }
     gap: 1rem;
 }
 .m-prow .name {
-    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-    font-size: 1.35rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;            /* 16px — finedine ürün adı boyutu */
     font-weight: 580;
     color: var(--ink);
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
+    line-height: 1.35;
     flex: 1;
+    text-transform: none;
 }
 .m-prow .price {
     font-family: 'Inter', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 580;
-    color: var(--teal-deep);
+    font-size: 0.95rem;         /* 15px — ürün adından biraz daha küçük */
+    font-weight: 480;
+    color: var(--ink);
+    letter-spacing: 0.2px;
     white-space: nowrap;
 }
 .m-pdesc {
-    font-size: 0.88rem;
-    color: var(--ink-soft);
-    margin-top: 0.25rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;       /* 13px — küçük, ince */
+    color: var(--muted);
+    margin-top: 0.4rem;
     font-weight: 380;
-    line-height: 1.5;
+    line-height: 1.55;
+    letter-spacing: 0.1px;
 }
 
 /* ===== FOOTER ===== */
@@ -191,10 +196,10 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== MOBİL ÖZEL ===== */
 @media (max-width: 480px) {
-    .m-name { font-size: 1.6rem; letter-spacing: 3px; }
-    .m-category-title { font-size: 1.25rem; }
-    .m-prow .name { font-size: 1.2rem; }
-    .m-prow .price { font-size: 1rem; }
+    .m-category-title { font-size: 1.2rem; }
+    .m-prow .name { font-size: 0.95rem; }       /* ~15px */
+    .m-prow .price { font-size: 0.9rem; }        /* ~14.4px */
+    .m-pdesc { font-size: 0.78rem; }             /* ~12.5px */
     .m-main { padding: 0 1rem 3rem; }
     .m-tabs button { font-size: 0.85rem; padding: 0.85rem 1rem 0.7rem; }
 }
