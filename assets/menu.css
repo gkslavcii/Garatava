@@ -159,8 +159,8 @@ a { color: inherit; text-decoration: none; }
 }
 .m-prow .price {
     font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;         /* 15px — ürün adından biraz daha küçük */
-    font-weight: 480;
+    font-size: 0.85rem;         /* 15px — ürün adından biraz daha küçük */
+    font-weight: 470;
     color: var(--ink);
     letter-spacing: 0.2px;
     white-space: nowrap;
