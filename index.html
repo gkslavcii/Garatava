@@ -170,38 +170,44 @@
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
-        /* Hero PNG logo + soft cream halkalı arka plan ışığı (renk çatışmasını yumuşatır) */
+        /* Hero PNG logo — geniş cream çerçeve scale + overflow ile kesilir, sadece wordmark görünür.
+           Crop'tan sonra harflerin etrafına amber/cream izli parlama. */
         .hero-logo-wrap {
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin: 0 auto 1.2rem;
-            width: 320px; max-width: 80vw;
-            aspect-ratio: 1 / 1;
+            width: 92vw; max-width: 1000px;
+            aspect-ratio: 4 / 1;
+            overflow: hidden;
             animation: fadeInDown 1.2s ease both;
         }
         .hero-logo-wrap::before {
+            /* harflerin arkasında çok ince izli parlama */
             content: '';
             position: absolute;
-            inset: -20%;
-            background: radial-gradient(circle at center,
-                rgba(245, 233, 211, 0.35) 0%,
-                rgba(245, 233, 211, 0.15) 35%,
-                transparent 65%);
-            border-radius: 50%;
+            left: 12%; right: 12%;
+            top: 22%; bottom: 22%;
+            background: radial-gradient(ellipse at center,
+                rgba(217, 122, 60, 0.28) 0%,
+                rgba(245, 233, 211, 0.14) 35%,
+                transparent 75%);
+            filter: blur(14px);
             z-index: 1;
-            filter: blur(8px);
+            pointer-events: none;
         }
         .hero-logo {
-            position: relative;
+            position: absolute;
+            inset: 0;
             z-index: 2;
             display: block;
             width: 100%;
             height: 100%;
             object-fit: contain;
             background: transparent;
-            filter: drop-shadow(0 6px 22px rgba(0,0,0,0.4));
+            transform: scale(2.4);
+            transform-origin: center;
+            filter:
+                drop-shadow(0 0 1px rgba(245, 233, 211, 0.5))
+                drop-shadow(0 0 6px rgba(217, 122, 60, 0.4));
         }
         .hero-eyebrow {
             font-family: 'Cormorant Garamond', serif;
@@ -613,7 +619,8 @@
             .container { padding: 0 1.2rem; }
             .hero { min-height: calc(100svh - 60px); padding-bottom: 4rem; }
             .hero-content { padding: 0.5rem 1.2rem; }
-            .hero-logo-wrap { width: 220px; margin-bottom: 0.8rem; }
+            .hero-logo-wrap { width: 96vw; aspect-ratio: 3.2 / 1; margin-bottom: 0.6rem; }
+            .hero-logo { transform: scale(2.6); }
             .hero-eyebrow { font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 0.6rem; }
             .hero h1 { font-size: 2rem; letter-spacing: 2px; margin-bottom: 0.8rem; line-height: 1.2; }
             .hero-tagline { font-size: 1rem; margin-bottom: 1.4rem; line-height: 1.45; }
