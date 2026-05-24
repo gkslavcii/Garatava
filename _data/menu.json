@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-23T12:19:45.9984766Z",
+  "updatedAt": "2026-05-24T04:29:40.1101966Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -25,11 +25,6 @@
           "name": "Dana Antrikot",
           "price": 680.00,
           "description": "Ersen şefin en özel bölgelerinden elde edilmiş et ile muhteşem bir menü"
-        },
-        {
-          "name": "Dana Bonfile",
-          "price": 680.00,
-          "description": ""
         },
         {
           "name": "Et Sote",
@@ -98,11 +93,6 @@
         {
           "name": "Çay",
           "price": 45.00,
-          "description": ""
-        },
-        {
-          "name": "Türk Kahvesi",
-          "price": 60.00,
           "description": ""
         },
         {
