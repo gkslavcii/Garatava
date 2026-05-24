@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-05-24T15:04:03.1907828Z",
+  "updatedAt": "2026-05-24T18:33:30.8057940Z",
   "businessName": "GARATAVA",
   "categories": [
     {
       "name": "Ana Yemek",
-      "sortOrder": 1,
+      "sortOrder": 10,
       "products": [
         {
           "name": "Dana Rosto",
@@ -17,19 +17,9 @@
           "description": ""
         },
         {
-          "name": "Çoban Kavurma",
-          "price": 650.00,
-          "description": ""
-        },
-        {
           "name": "Dana Antrikot",
           "price": 680.00,
           "description": "Ersen şefin en özel bölgelerinden elde edilmiş et ile muhteşem bir menü"
-        },
-        {
-          "name": "Dana Bonfile",
-          "price": 680.00,
-          "description": ""
         },
         {
           "name": "Et Sote",
@@ -52,15 +42,25 @@
           "description": ""
         },
         {
-          "name": "Murat Şefin Tarifi",
-          "price": 1000.00,
+          "name": "Bişey Menüsü",
+          "price": 400.00,
+          "description": "Şefin speciali"
+        },
+        {
+          "name": "Çoban Kavurma",
+          "price": 650.00,
+          "description": ""
+        },
+        {
+          "name": "Dana Bonfile",
+          "price": 680.00,
           "description": ""
         }
       ]
     },
     {
       "name": "Başlangıç",
-      "sortOrder": 2,
+      "sortOrder": 20,
       "products": [
         {
           "name": "Mercimek Çorba",
@@ -71,7 +71,7 @@
     },
     {
       "name": "Şaraplar",
-      "sortOrder": 3,
+      "sortOrder": 30,
       "products": [
         {
           "name": "Angora Kırmızı 75cl",
@@ -82,7 +82,7 @@
     },
     {
       "name": "Tatlılar",
-      "sortOrder": 4,
+      "sortOrder": 40,
       "products": [
         {
           "name": "Dondurmalı İrmik",
@@ -98,7 +98,7 @@
     },
     {
       "name": "Sıcak İçecekler",
-      "sortOrder": 5,
+      "sortOrder": 50,
       "products": [
         {
           "name": "Çay",
@@ -124,7 +124,7 @@
     },
     {
       "name": "Soğuk İçecekler",
-      "sortOrder": 6,
+      "sortOrder": 60,
       "products": [
         {
           "name": "Su",
@@ -160,7 +160,7 @@
     },
     {
       "name": "Rakılar",
-      "sortOrder": 7,
+      "sortOrder": 70,
       "products": [
         {
           "name": "Beylerbeyi Göbek Rakısı 20cl",
@@ -176,7 +176,7 @@
     },
     {
       "name": "Biralar",
-      "sortOrder": 8,
+      "sortOrder": 80,
       "products": [
         {
           "name": "Efes Pilsen 50cl",
@@ -192,7 +192,7 @@
     },
     {
       "name": "Mezeler",
-      "sortOrder": 9,
+      "sortOrder": 90,
       "products": [
         {
           "name": "Atom",
@@ -213,7 +213,7 @@
     },
     {
       "name": "Salatalar",
-      "sortOrder": 10,
+      "sortOrder": 100,
       "products": [
         {
           "name": "Çoban Salata",
@@ -229,7 +229,7 @@
     },
     {
       "name": "Mevsimler Ürünler",
-      "sortOrder": 13,
+      "sortOrder": 130,
       "products": [
         {
           "name": "Fırında Mantar",
