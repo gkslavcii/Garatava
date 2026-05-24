@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-24T04:29:40.1101966Z",
+  "updatedAt": "2026-05-24T15:04:03.1907828Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -27,6 +27,11 @@
           "description": "Ersen şefin en özel bölgelerinden elde edilmiş et ile muhteşem bir menü"
         },
         {
+          "name": "Dana Bonfile",
+          "price": 680.00,
+          "description": ""
+        },
+        {
           "name": "Et Sote",
           "price": 620.00,
           "description": ""
@@ -44,6 +49,11 @@
         {
           "name": "Köfte Izgara",
           "price": 620.00,
+          "description": ""
+        },
+        {
+          "name": "Murat Şefin Tarifi",
+          "price": 1000.00,
           "description": ""
         }
       ]
@@ -93,6 +103,11 @@
         {
           "name": "Çay",
           "price": 45.00,
+          "description": ""
+        },
+        {
+          "name": "Türk Kahvesi",
+          "price": 60.00,
           "description": ""
         },
         {
