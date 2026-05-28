@@ -170,7 +170,7 @@
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
-        /* Hero logo — sade. Hiçbir efekt yok, sadece PNG. */
+        /* Hero logo — koyu arka plan üzerinde cream tonuna çevir. */
         .hero-logo {
             display: block;
             width: 520px;
@@ -178,6 +178,7 @@
             height: auto;
             margin: 0 auto 1.4rem;
             animation: fadeInDown 1.2s ease both;
+            filter: brightness(0) invert(1) sepia(0.35) saturate(2.2) hue-rotate(355deg) brightness(1.05) drop-shadow(0 2px 18px rgba(0,0,0,0.25));
         }
         .hero-eyebrow {
             font-family: 'Cormorant Garamond', serif;
@@ -539,7 +540,14 @@
             padding: 4rem 0 2rem;
             text-align: center;
         }
-        .footer-logo { display: block; width: 220px; max-width: 70%; height: auto; margin: 0 auto 1.5rem; }
+        .footer-logo {
+            display: block;
+            width: 220px;
+            max-width: 70%;
+            height: auto;
+            margin: 0 auto 1.5rem;
+            filter: brightness(0) invert(1) sepia(0.35) saturate(2.2) hue-rotate(355deg) brightness(1.05);
+        }
         .footer-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); letter-spacing: 4px; margin-bottom: 0.4rem; }
         .footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--amber); letter-spacing: 3px; margin-bottom: 2rem; }
         .footer-social { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
@@ -568,6 +576,23 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+
+        /* === Powered by Soft# === */
+        .powered-by {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: rgba(245, 233, 211, 0.45);
+            transition: color 0.3s, opacity 0.3s;
+        }
+        .powered-by:hover { color: #8AB0E0; opacity: 1; }
+        .powered-by svg { display: block; height: 0.72rem; width: auto; }
 
         /* === Reveal animation === */
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
@@ -730,6 +755,7 @@
             max-width: 80vw;
             height: auto;
             animation: splashPulse 1.6s ease-in-out infinite;
+            filter: brightness(0) invert(1) sepia(0.35) saturate(2.2) hue-rotate(355deg) brightness(1.05);
         }
         @keyframes splashPulse {
             0%, 100% { transform: scale(1); }
@@ -984,6 +1010,13 @@
             <div class="footer-bottom">
                 &copy; <span id="year"></span> Garatava — Bodrum. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span>
                 <div class="footer-admin"><a href="/admin/" data-i18n="footer.admin">Yönetim Paneli</a></div>
+                <a class="powered-by" href="https://gkslavcii.github.io/SoftSharp/" target="_blank" rel="noopener" aria-label="Powered by Soft#">
+                    <span>Powered by</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 14" aria-hidden="true">
+                        <text x="0" y="11.5" font-family="'Inter',-apple-system,system-ui,sans-serif" font-size="13" font-weight="700" letter-spacing="-0.4" fill="currentColor">Soft</text>
+                        <text x="30" y="11.8" font-family="'Inter',-apple-system,system-ui,sans-serif" font-size="14" font-weight="800" letter-spacing="-0.8" fill="currentColor" opacity="0.7">#</text>
+                    </svg>
+                </a>
             </div>
         </div>
     </footer>

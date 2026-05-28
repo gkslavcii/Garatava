@@ -52,6 +52,7 @@ a { color: inherit; text-decoration: none; }
     max-width: 75vw;
     height: auto;
     margin: 0 auto;
+    filter: brightness(0) invert(1) sepia(0.35) saturate(2.2) hue-rotate(355deg) brightness(1.05);
 }
 
 /* ===== STICKY KATEGORİ TABS ===== */
@@ -192,6 +193,25 @@ a { color: inherit; text-decoration: none; }
     color: var(--ink-soft);
     font-size: 0.95rem;
 }
+
+/* === Powered by Soft# === */
+.m-powered {
+    margin-top: 0.9rem;
+}
+.m-powered a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.3s;
+}
+.m-powered a:hover { color: #1a2b4a; }
+.m-powered svg { display: block; height: 0.7rem; width: auto; }
 
 /* ===== MOBİL ÖZEL ===== */
 @media (max-width: 480px) {
