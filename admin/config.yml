@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "restaurant"
+    label: "Restoran Bilgileri"
+    files:
+      - name: "info"
+        label: "Genel Bilgiler"
+        file: "_data/restaurant.json"
+        fields:
+          - {label: "Restoran Adı", name: "name", widget: "string"}
+          - {label: "Açıklama", name: "description", widget: "text"}
+          - {label: "Telefon", name: "phone", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Adres", name: "address", widget: "string"}
+          - {label: "Açılış Saatleri", name: "hours", widget: "text"}
+          - {label: "Google Business URL", name: "google_url", widget: "string", required: false}
+          - {label: "Instagram", name: "instagram", widget: "string", required: false}
+          - {label: "Facebook", name: "facebook", widget: "string", required: false}
+          - {label: "WhatsApp", name: "whatsapp", widget: "string", required: false}
+
+  - name: "gallery"
+    label: "Galeri / Fotoğraflar"
+    files:
+      - name: "gallery_data"
+        label: "Galeri"
+        file: "_data/gallery.json"
+        fields:
+          - label: "Fotoğraflar"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Fotoğraf", name: "image", widget: "image"}
+              - {label: "Başlık", name: "title", widget: "string"}
+              - {label: "Açıklama", name: "description", widget: "string", required: false}
+
+  - name: "about"
+    label: "Hakkımızda"
+    files:
+      - name: "content"
+        label: "Hakkımızda Sayfası"
+        file: "_data/about.json"
+        fields:
+          - {label: "Başlık", name: "title", widget: "string"}
+          - {label: "Hikayemiz Metni", name: "content", widget: "text", hint: "Ana sayfadaki 'Bodrum'un Kalbinden' bölümünde görünür. Paragraflar için ARALIKLI satır bırakın (Enter Enter)."}
+          - {label: "Neden Biz - Madde 1", name: "reason1", widget: "string"}
+          - {label: "Neden Biz - Madde 2", name: "reason2", widget: "string"}
+          - {label: "Neden Biz - Madde 3", name: "reason3", widget: "string"}
+          - {label: "Neden Biz - Madde 4", name: "reason4", widget: "string"}
+          - {label: "Neden Biz - Madde 5", name: "reason5", widget: "string", required: false}
+          - {label: "Neden Biz - Madde 6", name: "reason6", widget: "string", required: false}

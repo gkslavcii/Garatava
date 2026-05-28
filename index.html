@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@280;380;480;580&family=Inter:wght@280;380;480;580&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <style>
         :root {
             --teal-deep: #0E4F5C;
@@ -545,10 +547,9 @@
             width: 220px;
             max-width: 70%;
             height: auto;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 0.2rem;
             filter: brightness(0) invert(1) sepia(0.35) saturate(2.2) hue-rotate(355deg) brightness(1.05);
         }
-        .footer-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); letter-spacing: 4px; margin-bottom: 0.4rem; }
         .footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--amber); letter-spacing: 3px; margin-bottom: 2rem; }
         .footer-social { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
         .footer-social a {
@@ -780,7 +781,6 @@
             </div>
             <div class="topbar-social">
                 <a href="https://www.instagram.com/garatavabodrum?igsh=MWdiZnQwanVkOGNxZw==" target="_blank" id="topbar-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" target="_blank" id="topbar-facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="https://wa.me/905539287494" target="_blank" id="topbar-whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
@@ -978,10 +978,10 @@
                         <i class="fa-brands fa-whatsapp"></i>
                         <div><strong>WhatsApp</strong><a href="https://wa.me/905539287494" target="_blank" id="contact-whatsapp" data-i18n="contact.waBtn">Hemen Mesaj Gönder</a></div>
                     </div>
-                    <div class="contact-card">
+                    <a class="contact-card contact-card-link" href="https://www.instagram.com/garatavabodrum?igsh=MWdiZnQwanVkOGNxZw==" target="_blank" id="contact-instagram-card">
                         <i class="fa-brands fa-instagram"></i>
-                        <div><strong>Instagram</strong><a href="https://www.instagram.com/garatavabodrum?igsh=MWdiZnQwanVkOGNxZw==" target="_blank" id="contact-instagram">@garatava</a></div>
-                    </div>
+                        <div><strong>Instagram</strong><span data-i18n="contact.igBtn">Bizi takip edin</span></div>
+                    </a>
                 </div>
                 <div class="map-wrap">
                     <a href="https://www.google.com/maps/dir/?api=1&destination=Garatava%2C+Bodrum" target="_blank" class="directions-btn">
@@ -999,11 +999,9 @@
     <footer>
         <div class="container">
             <img src="/images/logo.png" alt="Garatava" class="footer-logo" onerror="this.style.display='none'">
-            <div class="footer-name">GARATAVA</div>
             <div class="footer-sub">Bodrum</div>
             <div class="footer-social">
                 <a href="https://www.instagram.com/garatavabodrum?igsh=MWdiZnQwanVkOGNxZw==" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="https://wa.me/905539287494" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                 <a href="tel:+905539287494" aria-label="Telefon"><i class="fa-solid fa-phone"></i></a>
             </div>
@@ -1058,6 +1056,7 @@
                 'contact.eyebrow': 'İletişim', 'contact.title': 'Bizi Bulun',
                 'contact.address': 'Adres', 'contact.phone': 'Telefon', 'contact.email': 'E-posta',
                 'contact.waBtn': 'Hemen Mesaj Gönder',
+                'contact.igBtn': 'Bizi takip edin',
                 'map.directions': 'Yol Tarifi Al',
                 'footer.rights': 'Tüm hakları saklıdır.', 'footer.admin': 'Yönetim Paneli',
             },
@@ -1086,6 +1085,7 @@
                 'contact.eyebrow': 'Contact', 'contact.title': 'Find Us',
                 'contact.address': 'Address', 'contact.phone': 'Phone', 'contact.email': 'Email',
                 'contact.waBtn': 'Send Message Now',
+                'contact.igBtn': 'Follow us',
                 'map.directions': 'Get Directions',
                 'footer.rights': 'All rights reserved.', 'footer.admin': 'Admin Panel',
             }
@@ -1204,8 +1204,7 @@
             }
             if (restaurant.hours) document.getElementById('topbar-hours').innerHTML = `<i class="fa-regular fa-clock"></i> ${restaurant.hours}`;
             if (restaurant.address) document.getElementById('contact-address').textContent = restaurant.address;
-            if (restaurant.instagram) { setHref('topbar-instagram', restaurant.instagram); setHref('contact-instagram', restaurant.instagram); document.getElementById('contact-instagram').textContent = '@' + restaurant.instagram.replace(/.*instagram\.com\//,'').replace(/\/$/,''); }
-            if (restaurant.facebook) setHref('topbar-facebook', restaurant.facebook);
+            if (restaurant.instagram) { setHref('topbar-instagram', restaurant.instagram); setHref('contact-instagram-card', restaurant.instagram); }
             if (restaurant.whatsapp) {
                 window.__restaurantWhatsapp = restaurant.whatsapp;
                 const wa = `https://wa.me/${restaurant.whatsapp.replace(/[^0-9]/g,'')}`;
