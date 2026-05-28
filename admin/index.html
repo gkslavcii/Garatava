@@ -1,23 +1,935 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garatava Admin Panel</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garatava — Yönetim Paneli</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@380;480;580;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --teal-deep: #0E4F5C;
+            --teal: #1B7B8B;
+            --amber: #D97A3C;
+            --flame: #C44536;
+            --cream: #F5E9D3;
+            --sand: #E8D9B8;
+            --ink: #1A2E33;
+            --ink-soft: #3D5860;
+            --muted: #8B9A9F;
+            --white: #FAF6EE;
+            --bg: #F1ECE0;
+            --line: rgba(26, 46, 51, 0.1);
+            --ok: #2ea04c;
+            --err: #C44536;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            font-weight: 380;
+            line-height: 1.55;
+            min-height: 100vh;
+        }
+        a { color: var(--teal-deep); }
+        .hidden { display: none !important; }
+
+        /* === Login === */
+        .login-wrap {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, var(--teal-deep), var(--ink));
+        }
+        .login-card {
+            background: var(--white);
+            max-width: 480px;
+            width: 100%;
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .login-logo {
+            display: block;
+            width: 160px;
+            height: auto;
+            margin: 0 auto 1rem;
+        }
+        .login-card h1 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: var(--teal-deep);
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 0.3rem;
+        }
+        .login-card .subtitle {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .pat-help {
+            background: var(--cream);
+            border-left: 3px solid var(--amber);
+            padding: 0.9rem 1rem;
+            font-size: 0.82rem;
+            color: var(--ink-soft);
+            margin-bottom: 1.2rem;
+            line-height: 1.55;
+        }
+        .pat-help strong { color: var(--ink); }
+        .pat-help a { color: var(--teal-deep); font-weight: 580; }
+        .pat-help ol { margin: 0.4rem 0 0 1.1rem; }
+        .pat-help li { margin-bottom: 0.2rem; }
+        .pat-help code {
+            background: rgba(0,0,0,0.06);
+            padding: 0.05rem 0.35rem;
+            border-radius: 3px;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: 0.78rem;
+        }
+        .pat-help-toggle {
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--teal);
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            text-decoration: underline;
+            font-family: inherit;
+        }
+
+        .form-group { margin-bottom: 1rem; }
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--ink-soft);
+            margin-bottom: 0.4rem;
+            font-weight: 580;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 0.9rem;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--ink);
+            background: #fff;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus { outline: none; border-color: var(--teal); }
+        .form-group textarea { resize: vertical; min-height: 100px; font-family: inherit; }
+        .form-group .hint { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.4rem;
+            background: var(--teal-deep);
+            color: var(--white);
+            border: none;
+            border-radius: 3px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 580;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn:hover { background: var(--teal); }
+        .btn:active { transform: translateY(1px); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-amber { background: var(--amber); }
+        .btn-amber:hover { background: var(--flame); }
+        .btn-ghost { background: transparent; color: var(--ink-soft); border: 1px solid var(--line); }
+        .btn-ghost:hover { background: var(--white); color: var(--ink); }
+        .btn-danger { background: transparent; color: var(--err); border: 1px solid var(--err); }
+        .btn-danger:hover { background: var(--err); color: var(--white); }
+        .btn-block { width: 100%; justify-content: center; }
+
+        /* === Admin === */
+        .admin-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .admin-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            color: var(--teal-deep);
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .admin-header h1 img { height: 32px; width: auto; }
+        .admin-header .actions { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+        .user-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--cream);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+        }
+        .user-chip i { color: var(--amber); }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+            padding: 0 1.5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tabs button {
+            background: transparent;
+            border: none;
+            padding: 1rem 1.2rem;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 480;
+            color: var(--ink-soft);
+            cursor: pointer;
+            position: relative;
+            white-space: nowrap;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .tabs button:hover { color: var(--ink); }
+        .tabs button.active { color: var(--teal-deep); font-weight: 580; }
+        .tabs button.active::after {
+            content: '';
+            position: absolute;
+            left: 1.2rem; right: 1.2rem;
+            bottom: 0; height: 2px;
+            background: var(--amber);
+            border-radius: 2px;
+        }
+
+        .panel {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        .panel.hidden { display: none; }
+        .panel h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            color: var(--teal-deep);
+            letter-spacing: 1.5px;
+            margin-bottom: 0.3rem;
+            font-size: 1.6rem;
+        }
+        .panel .panel-sub {
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .card {
+            background: var(--white);
+            border-radius: 4px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            margin-bottom: 1.2rem;
+        }
+        .card-h {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--teal-deep);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .card-h i { color: var(--amber); }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        .save-bar {
+            display: flex;
+            gap: 0.6rem;
+            justify-content: flex-end;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--line);
+            margin-top: 1rem;
+        }
+
+        /* Gallery list */
+        .gallery-item {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            display: grid;
+            grid-template-columns: 90px 1fr auto;
+            gap: 0.9rem;
+            align-items: start;
+        }
+        .gallery-thumb {
+            width: 90px; height: 90px;
+            background: var(--bg);
+            border-radius: 3px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+        }
+        .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-fields { display: flex; flex-direction: column; gap: 0.5rem; }
+        .gallery-fields input { padding: 0.55rem 0.7rem; border: 1px solid var(--line); border-radius: 3px; font-family: inherit; font-size: 0.88rem; }
+        .gallery-fields input:focus { outline: none; border-color: var(--teal); }
+        .gallery-actions { display: flex; flex-direction: column; gap: 0.4rem; }
+        .icon-btn {
+            background: transparent;
+            border: 1px solid var(--line);
+            color: var(--ink-soft);
+            width: 32px; height: 32px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .icon-btn:hover { background: var(--cream); color: var(--ink); }
+        .icon-btn.del:hover { background: var(--err); color: var(--white); border-color: var(--err); }
+        @media (max-width: 600px) {
+            .gallery-item { grid-template-columns: 60px 1fr auto; }
+            .gallery-thumb { width: 60px; height: 60px; }
+        }
+
+        .upload-row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .upload-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1rem;
+            background: var(--cream);
+            color: var(--teal-deep);
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 580;
+            transition: background 0.2s;
+        }
+        .upload-label:hover { background: var(--sand); }
+        .upload-label input { display: none; }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(150%);
+            background: var(--ink);
+            color: var(--white);
+            padding: 0.9rem 1.4rem;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            z-index: 9999;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            max-width: 90vw;
+        }
+        #toast.show { transform: translateX(-50%) translateY(0); }
+        #toast.ok { background: var(--ok); }
+        #toast.err { background: var(--err); }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+        }
+        .spinner {
+            width: 40px; height: 40px;
+            border: 3px solid var(--cream);
+            border-top-color: var(--teal-deep);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
+
+    <!-- LOGIN -->
+    <div id="loginView" class="login-wrap">
+        <div class="login-card">
+            <img src="/images/logo.png" alt="Garatava" class="login-logo">
+            <h1>Yönetim Paneli</h1>
+            <p class="subtitle">Garatava — Bodrum</p>
+
+            <button class="pat-help-toggle" id="patHelpToggle">
+                <i class="fa-solid fa-circle-info"></i> GitHub Token nasıl oluşturulur?
+            </button>
+            <div class="pat-help hidden" id="patHelp">
+                <strong>Fine-grained Personal Access Token oluştur:</strong>
+                <ol>
+                    <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank">GitHub Token sayfasını aç</a></li>
+                    <li><b>Token name:</b> <code>Garatava Admin</code></li>
+                    <li><b>Expiration:</b> 1 yıl (veya istediğin süre)</li>
+                    <li><b>Repository access:</b> "Only select repositories" → <code>gkslavcii/Garatava</code></li>
+                    <li><b>Permissions → Repository permissions:</b><br><code>Contents</code> → <b>Read and write</b></li>
+                    <li>"Generate token" → kopyala → aşağı yapıştır</li>
+                </ol>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="patInput">GitHub Personal Access Token</label>
+                    <input type="password" id="patInput" placeholder="github_pat_..." autocomplete="off" required>
+                    <span class="hint">Token sadece bu cihazda saklanır, hiçbir yere gönderilmez.</span>
+                </div>
+                <button type="submit" class="btn btn-amber btn-block">
+                    <i class="fa-solid fa-right-to-bracket"></i> Giriş Yap
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN -->
+    <div id="adminView" class="hidden">
+        <header class="admin-header">
+            <h1><img src="/images/logo.png" alt=""> Yönetim Paneli</h1>
+            <div class="actions">
+                <span class="user-chip"><i class="fa-solid fa-user"></i> <span id="userLabel">…</span></span>
+                <a href="/" class="btn btn-ghost"><i class="fa-solid fa-eye"></i> Siteyi Gör</a>
+                <button class="btn btn-danger" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Çıkış</button>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="active" data-tab="restaurant"><i class="fa-solid fa-utensils"></i>&nbsp; Restoran Bilgileri</button>
+            <button data-tab="about"><i class="fa-solid fa-book-open"></i>&nbsp; Hakkımızda</button>
+            <button data-tab="gallery"><i class="fa-solid fa-images"></i>&nbsp; Galeri</button>
+        </nav>
+
+        <!-- Restaurant -->
+        <section id="panel-restaurant" class="panel">
+            <h2>Restoran Bilgileri</h2>
+            <p class="panel-sub">İletişim bilgileri, sosyal medya bağlantıları ve genel bilgiler.</p>
+            <div class="card">
+                <div class="card-h"><i class="fa-solid fa-circle-info"></i> Genel</div>
+                <div class="form-group">
+                    <label>Restoran Adı</label>
+                    <input type="text" data-field="name">
+                </div>
+                <div class="form-group">
+                    <label>Kısa Açıklama</label>
+                    <textarea data-field="description" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-h"><i class="fa-solid fa-address-card"></i> İletişim</div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="text" data-field="phone" placeholder="+90 ...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" data-field="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Adres</label>
+                    <input type="text" data-field="address">
+                </div>
+                <div class="form-group">
+                    <label>Açılış Saatleri</label>
+                    <input type="text" data-field="hours" placeholder="Her gün 09:00 - 02:00">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-h"><i class="fa-solid fa-share-nodes"></i> Sosyal Medya</div>
+                <div class="form-group">
+                    <label>Instagram URL</label>
+                    <input type="url" data-field="instagram" placeholder="https://www.instagram.com/...">
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp (numara, + ve ülke kodu ile)</label>
+                    <input type="text" data-field="whatsapp" placeholder="+905...">
+                </div>
+                <div class="form-group">
+                    <label>Google Business URL</label>
+                    <input type="url" data-field="google_url">
+                </div>
+                <div class="form-group">
+                    <label>Facebook URL <span class="hint" style="display:inline;">(opsiyonel — şu an gösterilmiyor)</span></label>
+                    <input type="url" data-field="facebook">
+                </div>
+            </div>
+            <div class="save-bar">
+                <button class="btn btn-ghost" data-action="reload" data-target="restaurant"><i class="fa-solid fa-rotate"></i> Yenile</button>
+                <button class="btn btn-amber" data-action="save" data-target="restaurant"><i class="fa-solid fa-floppy-disk"></i> Kaydet</button>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="panel-about" class="panel hidden">
+            <h2>Hakkımızda</h2>
+            <p class="panel-sub">Ana sayfa "Hikayemiz" bölümünde ve "Neden Garatava?" listesinde görünen metinler.</p>
+            <div class="card">
+                <div class="card-h"><i class="fa-solid fa-pen-fancy"></i> Hikayemiz Metni</div>
+                <div class="form-group">
+                    <label>Başlık</label>
+                    <input type="text" data-field="title">
+                </div>
+                <div class="form-group">
+                    <label>İçerik</label>
+                    <textarea data-field="content" rows="8"></textarea>
+                    <span class="hint">Paragraf için Enter Enter (boş bir satır) bırakın. **kalın** ve *italik* desteklenir.</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-h"><i class="fa-solid fa-star"></i> Neden Garatava? (6 madde)</div>
+                <div class="form-group">
+                    <label>1. Madde</label>
+                    <input type="text" data-field="reason1">
+                </div>
+                <div class="form-group">
+                    <label>2. Madde</label>
+                    <input type="text" data-field="reason2">
+                </div>
+                <div class="form-group">
+                    <label>3. Madde</label>
+                    <input type="text" data-field="reason3">
+                </div>
+                <div class="form-group">
+                    <label>4. Madde</label>
+                    <input type="text" data-field="reason4">
+                </div>
+                <div class="form-group">
+                    <label>5. Madde</label>
+                    <input type="text" data-field="reason5">
+                </div>
+                <div class="form-group">
+                    <label>6. Madde</label>
+                    <input type="text" data-field="reason6">
+                </div>
+            </div>
+            <div class="save-bar">
+                <button class="btn btn-ghost" data-action="reload" data-target="about"><i class="fa-solid fa-rotate"></i> Yenile</button>
+                <button class="btn btn-amber" data-action="save" data-target="about"><i class="fa-solid fa-floppy-disk"></i> Kaydet</button>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section id="panel-gallery" class="panel hidden">
+            <h2>Galeri</h2>
+            <p class="panel-sub">Ana sayfadaki "Atmosfer" bölümünde gösterilen fotoğraflar.</p>
+            <div class="card">
+                <div class="card-h"><i class="fa-solid fa-images"></i> Fotoğraflar</div>
+                <div class="upload-row">
+                    <label class="upload-label">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Fotoğraf Yükle
+                        <input type="file" id="galleryUpload" accept="image/*">
+                    </label>
+                    <span class="hint" style="margin:0;">veya manuel olarak görsel URL'i girin</span>
+                </div>
+                <div id="galleryList"></div>
+                <button class="btn btn-ghost btn-block" id="addGalleryBtn" style="margin-top: 0.8rem;">
+                    <i class="fa-solid fa-plus"></i> Boş Fotoğraf Ekle
+                </button>
+            </div>
+            <div class="save-bar">
+                <button class="btn btn-ghost" data-action="reload" data-target="gallery"><i class="fa-solid fa-rotate"></i> Yenile</button>
+                <button class="btn btn-amber" data-action="save" data-target="gallery"><i class="fa-solid fa-floppy-disk"></i> Kaydet</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="toast"></div>
+    <div id="loadingOverlay" class="loading-overlay hidden"><div class="spinner"></div></div>
+
+    <script>
+    (function () {
+        const REPO_OWNER = 'gkslavcii';
+        const REPO_NAME = 'Garatava';
+        const BRANCH = 'main';
+        const TOKEN_KEY = 'garatava-admin-token';
+        const API = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
+
+        const FILES = {
+            restaurant: '_data/restaurant.json',
+            about: '_data/about.json',
+            gallery: '_data/gallery.json',
+        };
+
+        const state = {
+            token: null,
+            user: null,
+            data: { restaurant: null, about: null, gallery: null },
+            sha:  { restaurant: null, about: null, gallery: null },
+        };
+
+        // === DOM helpers ===
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => document.querySelectorAll(sel);
+
+        function showLoading(on) { $('#loadingOverlay').classList.toggle('hidden', !on); }
+        function toast(msg, type = '') {
+            const t = $('#toast');
+            t.className = '';
+            t.innerHTML = (type === 'ok' ? '<i class="fa-solid fa-check-circle"></i> ' :
+                           type === 'err' ? '<i class="fa-solid fa-triangle-exclamation"></i> ' : '') + msg;
+            void t.offsetWidth; // restart
+            t.classList.add('show');
+            if (type) t.classList.add(type);
+            clearTimeout(t._timer);
+            t._timer = setTimeout(() => t.classList.remove('show'), 3500);
         }
-      });
-    }
-  </script>
+
+        // === GitHub API ===
+        async function gh(path, opts = {}) {
+            const resp = await fetch(API + path, {
+                ...opts,
+                headers: {
+                    'Authorization': `Bearer ${state.token}`,
+                    'Accept': 'application/vnd.github+json',
+                    'X-GitHub-Api-Version': '2022-11-28',
+                    ...(opts.headers || {}),
+                },
+            });
+            if (!resp.ok) {
+                const err = await resp.json().catch(() => ({}));
+                throw new Error(err.message || `HTTP ${resp.status}`);
+            }
+            return resp.json();
+        }
+
+        async function ghUser() {
+            const resp = await fetch('https://api.github.com/user', {
+                headers: {
+                    'Authorization': `Bearer ${state.token}`,
+                    'Accept': 'application/vnd.github+json',
+                },
+            });
+            if (!resp.ok) throw new Error('Token doğrulanamadı');
+            return resp.json();
+        }
+
+        async function loadFile(key) {
+            const path = FILES[key];
+            const data = await gh(`/contents/${path}?ref=${BRANCH}`);
+            const content = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+            const json = JSON.parse(content);
+            state.data[key] = json;
+            state.sha[key] = data.sha;
+            return json;
+        }
+
+        async function saveFile(key, commitMsg) {
+            const path = FILES[key];
+            const jsonStr = JSON.stringify(state.data[key], null, 2) + '\n';
+            const content = btoa(unescape(encodeURIComponent(jsonStr)));
+            const result = await gh(`/contents/${path}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    message: commitMsg || `admin: ${key} güncellendi`,
+                    content: content,
+                    sha: state.sha[key],
+                    branch: BRANCH,
+                }),
+            });
+            state.sha[key] = result.content.sha;
+            return result;
+        }
+
+        async function uploadImage(file) {
+            // Read as base64
+            const b64 = await new Promise((res, rej) => {
+                const reader = new FileReader();
+                reader.onload = () => res(reader.result.split(',')[1]);
+                reader.onerror = rej;
+                reader.readAsDataURL(file);
+            });
+            const safeName = file.name.toLowerCase()
+                .replace(/[^a-z0-9.\-]/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+            const filename = `${Date.now()}-${safeName}`;
+            const path = `images/${filename}`;
+            await gh(`/contents/${path}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    message: `admin: galeri görseli eklendi (${filename})`,
+                    content: b64,
+                    branch: BRANCH,
+                }),
+            });
+            return `/${path}`;
+        }
+
+        // === Form binding ===
+        function fillForm(panelSel, data) {
+            $$(`${panelSel} [data-field]`).forEach(el => {
+                const key = el.dataset.field;
+                el.value = data[key] ?? '';
+            });
+        }
+        function readForm(panelSel, target) {
+            $$(`${panelSel} [data-field]`).forEach(el => {
+                const key = el.dataset.field;
+                target[key] = el.value.trim();
+            });
+            return target;
+        }
+
+        // === Gallery UI ===
+        function renderGallery() {
+            const list = $('#galleryList');
+            list.innerHTML = '';
+            const items = (state.data.gallery && state.data.gallery.items) || [];
+            if (items.length === 0) {
+                list.innerHTML = '<div class="empty-state">Henüz fotoğraf yok. Yukarıdaki "Fotoğraf Yükle" ile başlayın.</div>';
+                return;
+            }
+            items.forEach((item, idx) => {
+                const row = document.createElement('div');
+                row.className = 'gallery-item';
+                row.innerHTML = `
+                    <div class="gallery-thumb">
+                        ${item.image ? `<img src="${item.image}" alt="" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\\'fa-regular fa-image\\'></i>';">` : '<i class="fa-regular fa-image"></i>'}
+                    </div>
+                    <div class="gallery-fields">
+                        <input type="text" placeholder="Görsel URL'i (/images/...)" data-gfield="image" data-idx="${idx}" value="${escapeAttr(item.image || '')}">
+                        <input type="text" placeholder="Başlık" data-gfield="title" data-idx="${idx}" value="${escapeAttr(item.title || '')}">
+                        <input type="text" placeholder="Açıklama (opsiyonel)" data-gfield="description" data-idx="${idx}" value="${escapeAttr(item.description || '')}">
+                    </div>
+                    <div class="gallery-actions">
+                        <button class="icon-btn" title="Yukarı" data-gact="up" data-idx="${idx}" ${idx === 0 ? 'disabled' : ''}><i class="fa-solid fa-arrow-up"></i></button>
+                        <button class="icon-btn" title="Aşağı" data-gact="down" data-idx="${idx}" ${idx === items.length - 1 ? 'disabled' : ''}><i class="fa-solid fa-arrow-down"></i></button>
+                        <button class="icon-btn del" title="Sil" data-gact="del" data-idx="${idx}"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+                list.appendChild(row);
+            });
+        }
+        function escapeAttr(s) {
+            return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        function collectGallery() {
+            const items = state.data.gallery.items || [];
+            $$('#galleryList [data-gfield]').forEach(el => {
+                const idx = +el.dataset.idx;
+                const f = el.dataset.gfield;
+                if (items[idx]) items[idx][f] = el.value.trim();
+            });
+            // strip empty
+            state.data.gallery.items = items.filter(it => (it.image || '').trim() || (it.title || '').trim());
+        }
+
+        // === Tabs ===
+        function switchTab(tab) {
+            $$('.tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+            $$('.panel').forEach(p => p.classList.toggle('hidden', p.id !== `panel-${tab}`));
+        }
+
+        // === Load + render ===
+        async function loadInto(key) {
+            try {
+                showLoading(true);
+                const data = await loadFile(key);
+                if (key === 'gallery') renderGallery();
+                else fillForm(`#panel-${key}`, data);
+            } catch (e) {
+                toast('Yüklenemedi: ' + e.message, 'err');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function saveTab(key) {
+            try {
+                showLoading(true);
+                if (key === 'gallery') collectGallery();
+                else readForm(`#panel-${key}`, state.data[key]);
+                await saveFile(key);
+                toast('Kaydedildi · GitHub Pages 1-2 dk içinde günceller', 'ok');
+            } catch (e) {
+                if (/sha|conflict|409/i.test(e.message)) {
+                    toast('Çakışma — dosya başka yerden değişmiş, "Yenile"yi tıklayın', 'err');
+                } else {
+                    toast('Kaydedilemedi: ' + e.message, 'err');
+                }
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // === Login flow ===
+        async function tryLogin(token) {
+            state.token = token;
+            try {
+                showLoading(true);
+                const user = await ghUser();
+                state.user = user;
+                localStorage.setItem(TOKEN_KEY, token);
+                $('#userLabel').textContent = user.login;
+                $('#loginView').classList.add('hidden');
+                $('#adminView').classList.remove('hidden');
+                await Promise.all(['restaurant', 'about', 'gallery'].map(loadInto));
+                toast('Giriş başarılı', 'ok');
+            } catch (e) {
+                state.token = null;
+                localStorage.removeItem(TOKEN_KEY);
+                toast(e.message, 'err');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem(TOKEN_KEY);
+            state.token = null;
+            state.user = null;
+            $('#adminView').classList.add('hidden');
+            $('#loginView').classList.remove('hidden');
+            $('#patInput').value = '';
+        }
+
+        // === Wire up ===
+        document.addEventListener('DOMContentLoaded', () => {
+            $('#patHelpToggle').addEventListener('click', () => $('#patHelp').classList.toggle('hidden'));
+
+            $('#loginForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const token = $('#patInput').value.trim();
+                if (!token) return;
+                tryLogin(token);
+            });
+
+            $('#logoutBtn').addEventListener('click', logout);
+
+            $$('.tabs button').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-action]');
+                if (!btn) return;
+                const { action, target } = btn.dataset;
+                if (action === 'save') saveTab(target);
+                if (action === 'reload') loadInto(target);
+            });
+
+            // Gallery actions
+            $('#addGalleryBtn').addEventListener('click', () => {
+                if (!state.data.gallery) state.data.gallery = { items: [] };
+                state.data.gallery.items = state.data.gallery.items || [];
+                // collect current edits first
+                collectGallery();
+                state.data.gallery.items.push({ image: '', title: '', description: '' });
+                renderGallery();
+            });
+
+            $('#galleryList').addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-gact]');
+                if (!btn) return;
+                const idx = +btn.dataset.idx;
+                const items = state.data.gallery.items;
+                collectGallery();
+                if (btn.dataset.gact === 'del') {
+                    if (!confirm('Bu fotoğrafı listeden çıkaralım mı?')) return;
+                    items.splice(idx, 1);
+                } else if (btn.dataset.gact === 'up' && idx > 0) {
+                    [items[idx - 1], items[idx]] = [items[idx], items[idx - 1]];
+                } else if (btn.dataset.gact === 'down' && idx < items.length - 1) {
+                    [items[idx + 1], items[idx]] = [items[idx], items[idx + 1]];
+                }
+                renderGallery();
+            });
+
+            $('#galleryUpload').addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                e.target.value = '';
+                try {
+                    showLoading(true);
+                    toast('Görsel yükleniyor…');
+                    const url = await uploadImage(file);
+                    if (!state.data.gallery) state.data.gallery = { items: [] };
+                    state.data.gallery.items = state.data.gallery.items || [];
+                    collectGallery();
+                    state.data.gallery.items.push({ image: url, title: '', description: '' });
+                    renderGallery();
+                    toast('Görsel yüklendi — başlık ekleyip "Kaydet" tıklayın', 'ok');
+                } catch (err) {
+                    toast('Yüklenemedi: ' + err.message, 'err');
+                } finally {
+                    showLoading(false);
+                }
+            });
+
+            // Auto-login if token exists
+            const saved = localStorage.getItem(TOKEN_KEY);
+            if (saved) {
+                $('#patInput').value = saved;
+                tryLogin(saved);
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
