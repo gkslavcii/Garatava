@@ -421,26 +421,11 @@
             <h1>Yönetim Paneli</h1>
             <p class="subtitle">Garatava — Bodrum</p>
 
-            <button class="pat-help-toggle" id="patHelpToggle">
-                <i class="fa-solid fa-circle-info"></i> GitHub Token nasıl oluşturulur?
-            </button>
-            <div class="pat-help hidden" id="patHelp">
-                <strong>Fine-grained Personal Access Token oluştur:</strong>
-                <ol>
-                    <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank">GitHub Token sayfasını aç</a></li>
-                    <li><b>Token name:</b> <code>Garatava Admin</code></li>
-                    <li><b>Expiration:</b> 1 yıl (veya istediğin süre)</li>
-                    <li><b>Repository access:</b> "Only select repositories" → <code>gkslavcii/Garatava</code></li>
-                    <li><b>Permissions → Repository permissions:</b><br><code>Contents</code> → <b>Read and write</b></li>
-                    <li>"Generate token" → kopyala → aşağı yapıştır</li>
-                </ol>
-            </div>
-
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="patInput">GitHub Personal Access Token</label>
-                    <input type="password" id="patInput" placeholder="github_pat_..." autocomplete="off" required>
-                    <span class="hint">Token sadece bu cihazda saklanır, hiçbir yere gönderilmez.</span>
+                    <label for="patInput">GİRİŞ ŞİFRESİ</label>
+                    <input type="password" id="patInput" placeholder="lütfen şifrenizi giriniz..." autocomplete="off" required>
+                    <span class="hint">Şifre almak için geliştiriciniz ile konuşunuz.</span>
                 </div>
                 <button type="submit" class="btn btn-amber btn-block">
                     <i class="fa-solid fa-right-to-bracket"></i> Giriş Yap
