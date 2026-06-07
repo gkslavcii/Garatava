@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-07T08:51:45.7563688Z",
+  "updatedAt": "2026-06-07T08:56:55.4777377Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -59,11 +59,6 @@
         {
           "name": "Ezogelin Çorbası",
           "price": 150.00,
-          "description": ""
-        },
-        {
-          "name": "Keremin Speciali",
-          "price": 1500.00,
           "description": ""
         }
       ]
