@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-31T10:13:11.8573518Z",
+  "updatedAt": "2026-06-07T08:51:45.7563688Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -55,6 +55,16 @@
           "name": "Dana Bonfile",
           "price": 680.00,
           "description": ""
+        },
+        {
+          "name": "Ezogelin Çorbası",
+          "price": 150.00,
+          "description": ""
+        },
+        {
+          "name": "Keremin Speciali",
+          "price": 1500.00,
+          "description": ""
         }
       ]
     },
@@ -63,8 +73,13 @@
       "sortOrder": 20,
       "products": [
         {
-          "name": "Mercimek Çorba",
+          "name": "Kellepaça Çorbası",
           "price": 140.00,
+          "description": ""
+        },
+        {
+          "name": "Mercimek Çorbası",
+          "price": 150.00,
           "description": ""
         }
       ]
@@ -127,18 +142,13 @@
       "sortOrder": 60,
       "products": [
         {
-          "name": "Su",
+          "name": "Pet Su 500ml",
           "price": 25.00,
           "description": ""
         },
         {
           "name": "Ayran",
           "price": 25.00,
-          "description": ""
-        },
-        {
-          "name": "Sıkma Portakal",
-          "price": 120.00,
           "description": ""
         },
         {
@@ -175,7 +185,7 @@
         {
           "name": "Beylerbeyi Göbek Rakısı 70cl",
           "price": 3250.00,
-          "description": "soğan,roka"
+          "description": ""
         }
       ]
     },
@@ -275,6 +285,11 @@
           "name": "Haşlanmış Yumurta",
           "price": 30.00,
           "description": ""
+        },
+        {
+          "name": "Ezine Peynir Porsiyon",
+          "price": 100.00,
+          "description": ""
         }
       ]
     },
@@ -301,17 +316,6 @@
         {
           "name": "Acı Ot",
           "price": 350.00,
-          "description": ""
-        }
-      ]
-    },
-    {
-      "name": "Ekstralar",
-      "sortOrder": 140,
-      "products": [
-        {
-          "name": "Dana Sucuk Porsiyon",
-          "price": 100.00,
           "description": ""
         }
       ]
