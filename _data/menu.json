@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-07T08:56:55.4777377Z",
+  "updatedAt": "2026-06-08T19:47:40.5430784Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -129,6 +129,11 @@
           "name": "Filtre Kahve",
           "price": 150.00,
           "description": ""
+        },
+        {
+          "name": "Americano",
+          "price": 150.00,
+          "description": ""
         }
       ]
     },
@@ -180,6 +185,11 @@
         {
           "name": "Beylerbeyi Göbek Rakısı 70cl",
           "price": 3250.00,
+          "description": ""
+        },
+        {
+          "name": "Beylerbeyi Duble",
+          "price": 400.00,
           "description": ""
         }
       ]
