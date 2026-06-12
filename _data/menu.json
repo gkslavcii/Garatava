@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T19:47:40.5430784Z",
+  "updatedAt": "2026-06-12T18:05:59.1253216Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -59,6 +59,11 @@
         {
           "name": "Ezogelin Çorbası",
           "price": 150.00,
+          "description": ""
+        },
+        {
+          "name": "Ersin Şef'in Speciali",
+          "price": 1000.00,
           "description": ""
         }
       ]
@@ -191,6 +196,11 @@
           "name": "Beylerbeyi Duble",
           "price": 400.00,
           "description": ""
+        },
+        {
+          "name": "Efe Gold Rakı 100cl",
+          "price": 3000.00,
+          "description": ""
         }
       ]
     },
@@ -243,6 +253,11 @@
         {
           "name": "Peksimetli Köy Peyniri",
           "price": 300.00,
+          "description": ""
+        },
+        {
+          "name": "Garatava Salata",
+          "price": 250.00,
           "description": ""
         }
       ]
