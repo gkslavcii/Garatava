@@ -11,6 +11,24 @@
 
 const TR_FMT = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 
+// AB-14 alerjen anahtar → etiket/ikon (backend menu.json'da key dizisi gönderir)
+const ALLERGENS = {
+    gluten:     { label: 'Gluten',            icon: '🌾' },
+    crustacean: { label: 'Kabuklu Deniz Ür.', icon: '🦐' },
+    egg:        { label: 'Yumurta',           icon: '🥚' },
+    fish:       { label: 'Balık',             icon: '🐟' },
+    peanut:     { label: 'Yer Fıstığı',       icon: '🥜' },
+    soy:        { label: 'Soya',              icon: '🫘' },
+    milk:       { label: 'Süt',               icon: '🥛' },
+    nuts:       { label: 'Sert Kabuklu',      icon: '🌰' },
+    celery:     { label: 'Kereviz',           icon: '🥬' },
+    mustard:    { label: 'Hardal',            icon: '🟡' },
+    sesame:     { label: 'Susam',             icon: '🌱' },
+    sulphite:   { label: 'Sülfit',            icon: '🍷' },
+    lupin:      { label: 'Lupin',             icon: '🫛' },
+    mollusc:    { label: 'Yumuşakça',         icon: '🦪' },
+};
+
 async function loadMenu() {
     const root = document.getElementById('menuRoot');
     const tabs = document.getElementById('catTabs');
@@ -85,6 +103,21 @@ async function loadMenu() {
                     cal.className = 'm-pcal';
                     cal.textContent = `${p.calories} kcal`;
                     div.appendChild(cal);
+                }
+
+                // Alerjenler — reçeteden toplanan etiketler (rozet). Boş/yoksa gösterme.
+                if (Array.isArray(p.allergens) && p.allergens.length) {
+                    const al = document.createElement('div');
+                    al.className = 'm-palrg';
+                    p.allergens.forEach(k => {
+                        const def = ALLERGENS[k];
+                        if (!def) return;
+                        const chip = document.createElement('span');
+                        chip.className = 'm-alrg';
+                        chip.textContent = `${def.icon} ${def.label}`;
+                        al.appendChild(chip);
+                    });
+                    if (al.childElementCount) div.appendChild(al);
                 }
                 sec.appendChild(div);
             });
