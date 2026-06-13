@@ -80,6 +80,13 @@ async function loadMenu() {
                 const name = document.createElement('div');
                 name.className = 'name';
                 name.textContent = p.name;
+                // Kalori — adın hemen sağında soft, parantez içinde. null = girilmemiş (gizle); 0 geçerli.
+                if (typeof p.calories === 'number') {
+                    const cal = document.createElement('span');
+                    cal.className = 'm-namecal';
+                    cal.textContent = ` (${p.calories} kcal)`;
+                    name.appendChild(cal);
+                }
                 row.appendChild(name);
 
                 if (typeof p.price === 'number' && p.price > 0) {
@@ -95,14 +102,6 @@ async function loadMenu() {
                     desc.className = 'm-pdesc';
                     desc.textContent = p.description.trim();
                     div.appendChild(desc);
-                }
-
-                // Kalori — açıklamanın altında soft bir satır. null = girilmemiş (gizle); 0 geçerli.
-                if (typeof p.calories === 'number') {
-                    const cal = document.createElement('div');
-                    cal.className = 'm-pcal';
-                    cal.textContent = `${p.calories} kcal`;
-                    div.appendChild(cal);
                 }
 
                 // Alerjenler — reçeteden toplanan etiketler (rozet). Boş/yoksa gösterme.
