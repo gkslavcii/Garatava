@@ -78,6 +78,14 @@ async function loadMenu() {
                     desc.textContent = p.description.trim();
                     div.appendChild(desc);
                 }
+
+                // Kalori — açıklamanın altında soft bir satır. null = girilmemiş (gizle); 0 geçerli.
+                if (typeof p.calories === 'number') {
+                    const cal = document.createElement('div');
+                    cal.className = 'm-pcal';
+                    cal.textContent = `${p.calories} kcal`;
+                    div.appendChild(cal);
+                }
                 sec.appendChild(div);
             });
             root.appendChild(sec);
