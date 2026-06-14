@@ -184,6 +184,38 @@ a { color: inherit; text-decoration: none; }
     white-space: nowrap;
 }
 
+/* Ürün görsel rozeti — adın yanında küçük 📷; tıklayınca lightbox */
+.m-photo-badge {
+    background: none; border: 0; cursor: pointer;
+    font-size: 0.85rem; padding: 0 0 0 0.3rem; line-height: 1;
+    opacity: 0.7; vertical-align: middle;
+}
+.m-photo-badge:hover { opacity: 1; }
+
+/* Lightbox — tam ekran görsel */
+.m-lightbox {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px; cursor: zoom-out;
+    animation: m-lb-in 0.15s ease;
+}
+@keyframes m-lb-in { from { opacity: 0; } to { opacity: 1; } }
+.m-lb-fig { margin: 0; max-width: 100%; max-height: 100%; text-align: center; }
+.m-lightbox img {
+    max-width: 100%; max-height: 80vh; border-radius: 12px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6); object-fit: contain;
+}
+.m-lb-fig figcaption {
+    color: #fff; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+    margin-top: 12px; opacity: 0.92;
+}
+.m-lb-close {
+    position: fixed; top: 16px; right: 18px;
+    background: rgba(255, 255, 255, 0.15); color: #fff; border: 0;
+    width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer;
+}
+
 /* Alerjenler — küçük soft rozetler */
 .m-palrg {
     display: flex;

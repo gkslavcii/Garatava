@@ -29,6 +29,23 @@ const ALLERGENS = {
     mollusc:    { label: 'Yumuşakça',         icon: '🦪' },
 };
 
+// Ürün görseli lightbox — tam ekran karartma + görsel; herhangi bir yere tıkla → kapat
+function openLightbox(src, title) {
+    const old = document.getElementById('m-lightbox');
+    if (old) old.remove();
+    const lb = document.createElement('div');
+    lb.id = 'm-lightbox';
+    lb.className = 'm-lightbox';
+    lb.innerHTML = `
+        <button class="m-lb-close" aria-label="Kapat">✕</button>
+        <figure class="m-lb-fig">
+            <img src="${src}" alt="${(title || '').replace(/"/g, '&quot;')}">
+            <figcaption>${title || ''}</figcaption>
+        </figure>`;
+    lb.addEventListener('click', () => lb.remove());
+    document.body.appendChild(lb);
+}
+
 async function loadMenu() {
     const root = document.getElementById('menuRoot');
     const tabs = document.getElementById('catTabs');
@@ -86,6 +103,16 @@ async function loadMenu() {
                     cal.className = 'm-namecal';
                     cal.textContent = ` (${p.calories} kcal)`;
                     name.appendChild(cal);
+                }
+                // Görsel işareti — anasayfada inline değil, "📷" rozeti; tıklayınca lightbox açılır
+                if (p.image) {
+                    const cam = document.createElement('button');
+                    cam.className = 'm-photo-badge';
+                    cam.type = 'button';
+                    cam.textContent = '📷';
+                    cam.setAttribute('aria-label', p.name + ' fotoğrafı');
+                    cam.addEventListener('click', (e) => { e.stopPropagation(); openLightbox(p.image, p.name); });
+                    name.appendChild(cam);
                 }
                 row.appendChild(name);
 
