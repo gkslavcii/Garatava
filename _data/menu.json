@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-14T20:25:42.3841941Z",
+  "updatedAt": "2026-06-14T21:16:49.5372123Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -46,7 +46,7 @@
           "allergens": [
             "gluten"
           ],
-          "image": "/images/menu/p30.webp"
+          "image": null
         },
         {
           "name": "Dana Ciğer",
@@ -99,10 +99,12 @@
         {
           "name": "Ersin Şef'in Speciali",
           "price": 1000.00,
-          "description": "200 gr bonfile et ile muhteşem sunum",
-          "calories": null,
-          "allergens": [],
-          "image": null
+          "description": "özel tarifle marine edilmiş ve soslanmış 200 gr bonfile",
+          "calories": 1440,
+          "allergens": [
+            "gluten"
+          ],
+          "image": "/images/menu/p57.webp"
         }
       ]
     },
@@ -372,6 +374,7 @@
           "description": "Mevsim ürünleriyle birlikte bodruma has Peynir ve Yeşil Zeytin",
           "calories": 296,
           "allergens": [
+            "gluten",
             "milk"
           ],
           "image": "/images/menu/p10.jpg"
@@ -389,7 +392,9 @@
           "price": 250.00,
           "description": "",
           "calories": null,
-          "allergens": [],
+          "allergens": [
+            "gluten"
+          ],
           "image": null
         }
       ]
