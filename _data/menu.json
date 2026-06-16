@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-14T21:16:49.5372123Z",
+  "updatedAt": "2026-06-16T18:28:50.0082904Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -361,6 +361,38 @@
           "calories": null,
           "allergens": [],
           "image": null
+        },
+        {
+          "name": "Pava",
+          "price": 200.00,
+          "description": "Ege yöresinin vazgeçilmez lezzeti",
+          "calories": null,
+          "allergens": [],
+          "image": "/images/menu/p60.webp"
+        },
+        {
+          "name": "Yoğurtlu Semizotu",
+          "price": 200.00,
+          "description": "",
+          "calories": null,
+          "allergens": [],
+          "image": null
+        },
+        {
+          "name": "Köpeoğlu",
+          "price": 200.00,
+          "description": "",
+          "calories": null,
+          "allergens": [],
+          "image": null
+        },
+        {
+          "name": "Girit Mezesi",
+          "price": 200.00,
+          "description": "",
+          "calories": null,
+          "allergens": [],
+          "image": null
         }
       ]
     },
@@ -370,7 +402,7 @@
       "products": [
         {
           "name": "Çoban Salata",
-          "price": 230.00,
+          "price": 300.00,
           "description": "Mevsim ürünleriyle birlikte bodruma has Peynir ve Yeşil Zeytin",
           "calories": 296,
           "allergens": [
@@ -380,7 +412,7 @@
           "image": "/images/menu/p10.jpg"
         },
         {
-          "name": "Peksimetli Köy Peyniri",
+          "name": "Peksimetli Köy Salatası",
           "price": 300.00,
           "description": "",
           "calories": null,
@@ -388,13 +420,21 @@
           "image": null
         },
         {
-          "name": "Garatava Salata",
-          "price": 250.00,
+          "name": "Çökelekli Garatava Salata",
+          "price": 400.00,
           "description": "",
           "calories": null,
           "allergens": [
             "gluten"
           ],
+          "image": null
+        },
+        {
+          "name": "Roka Salatası",
+          "price": 350.00,
+          "description": "",
+          "calories": null,
+          "allergens": [],
           "image": null
         }
       ]
