@@ -838,8 +838,6 @@
 
         // === Wire up ===
         document.addEventListener('DOMContentLoaded', () => {
-            $('#patHelpToggle').addEventListener('click', () => $('#patHelp').classList.toggle('hidden'));
-
             $('#loginForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const token = $('#patInput').value.trim();
