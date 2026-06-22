@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-16T18:28:50.0082904Z",
+  "updatedAt": "2026-06-22T18:45:37.4794302Z",
   "businessName": "GARATAVA",
   "categories": [
     {
@@ -104,7 +104,15 @@
           "allergens": [
             "gluten"
           ],
-          "image": "/images/menu/p57.webp"
+          "image": null
+        },
+        {
+          "name": "Mangalda Sucuk",
+          "price": 400.00,
+          "description": "",
+          "calories": null,
+          "allergens": [],
+          "image": null
         }
       ]
     },
@@ -309,6 +317,14 @@
           "calories": null,
           "allergens": [],
           "image": null
+        },
+        {
+          "name": "Efe Gold 50cl",
+          "price": 2200.00,
+          "description": "",
+          "calories": null,
+          "allergens": [],
+          "image": null
         }
       ]
     },
@@ -368,7 +384,7 @@
           "description": "Ege yöresinin vazgeçilmez lezzeti",
           "calories": null,
           "allergens": [],
-          "image": "/images/menu/p60.webp"
+          "image": null
         },
         {
           "name": "Yoğurtlu Semizotu",
@@ -393,6 +409,14 @@
           "calories": null,
           "allergens": [],
           "image": null
+        },
+        {
+          "name": "Haydari",
+          "price": 200.00,
+          "description": "",
+          "calories": null,
+          "allergens": [],
+          "image": null
         }
       ]
     },
@@ -409,7 +433,7 @@
             "gluten",
             "milk"
           ],
-          "image": "/images/menu/p10.jpg"
+          "image": null
         },
         {
           "name": "Peksimetli Köy Salatası",
@@ -546,7 +570,7 @@
         {
           "name": "Acı Ot",
           "price": 350.00,
-          "description": "",
+          "description": "Bodrumun tarif edilemez yöresel kış mevsimi ürünü",
           "calories": null,
           "allergens": [],
           "image": null
